@@ -1,0 +1,113 @@
+{% extends 'students/child_detail/base.html' %}
+
+{% load i18n %}
+{% load url from future %}
+{% load widget_tweaks %}
+
+{% block content %}
+<script src="https://www.google.com/jsapi" type="text/javascript">
+</script>
+
+<script src="/site_media/static/js/jquery.js" type="text/javascript"></script>
+<script src="/site_media/static/js/jquery.maskedinput.js" type="text/javascript"></script>
+<script src="/site_media/static/js/livevalidation.js" type="text/javascript" ></script>
+<<<<<<< HEAD
+=======
+<script>
+function no_future(transfer_date)
+{
+   var t_day = document.getElementById(transfer_date).value;
+   
+   var date = t_day.substring(0,2);
+   var month = t_day.substring(3,5);
+   var year = t_day.substring(6,10);
+
+   var myDate = new Date(year,month-1,date);
+   var today = new Date();
+   
+   var minyr = today.getFullYear()-1;
+
+    if(myDate > today){
+    alert("Date Error: FUTURE DATE ENTERED !!!");
+    document.getElementById('transfer_date').value="";
+    }
+    
+ }
+ </script>
+>>>>>>> 5326b7d4e9e771b6f2a14c3bb10e67c9fdd8e3e6
+
+{% if cannot_transfer %}
+<p style="color:red;font-size:20px;" > {{ cannot_transfer }}<br>{{instance.unique_id_no}} {{instance.name}}</p>
+{% else %}
+<div class="row">
+  <div class="col-md-8" >
+  <form action='' method='post' enctype="multipart/form-data" >
+  <fieldset>
+  {% csrf_token %}
+
+    <div  class="form-group" ng-init="child_transferred='No'" style="color:blue;"> <b>{% trans "Whether child was transferred to another school?" %}</b>
+      <select name="child_transferred" id="child_transferred" class="form-control" ng-model="child_transferred">
+       <option value="Yes" >Yes</option>
+       <option value="No" >No</option>
+      </select>
+    </div>
+    <div class="form-group" ng-show="child_transferred" style="color:blue;"> <strong> Date of Transfer (Mandatory)</strong></br>
+<<<<<<< HEAD
+        <input class="form-control" name="transfer_date" id="transfer_date" type="text" data-mask="" data-inputmask="'alias': 'dd/mm/yyyy'" value='{{form.transfer_date}}'>
+=======
+        <input class="form-control" name="transfer_date" id="transfer_date" type="text" data-mask="" data-inputmask="'alias': 'dd/mm/yyyy'" value='{{form.transfer_date}}' onblur="no_future('transfer_date');">
+>>>>>>> 5326b7d4e9e771b6f2a14c3bb10e67c9fdd8e3e6
+        <SCRIPT language=Javascript>
+    var transfer_date = new LiveValidation( 'transfer_date' );
+    transfer_date.add( Validate.Presence, { failureMessage: "Please Enter the transfer date" } );
+    </script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5326b7d4e9e771b6f2a14c3bb10e67c9fdd8e3e6
+          <br>
+
+</div>
+          <br>
+
+<button class='btn btn-large btn-success' type='submit' onclick="this.disabled=true,this.form.submit(); type='submit'"> 
+            {% trans "Submit" %}
+        </button>
+
+</div>
+        
+ </fieldset>
+</div>
+          
+  </form>
+
+  </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <!--<script src="../../js/bootstrap.min.js" type="text/javascript"></script>-->
+        <!-- InputMask -->
+        <script src="/site_media/static/js/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+        <script src="/site_media/static/js/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+        <!--<script src="../../js/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>-->
+        <!-- date-range-picker -->
+
+        <!-- AdminLTE App -->
+        <!--<script src="../../js/AdminLTE/app.js" type="text/javascript"></script>-->
+
+        <!-- Page script -->
+        <script type="text/javascript">
+            $(function() {
+                //Datemask dd/mm/yyyy
+                $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+                //Datemask2 mm/dd/yyyy
+
+                $("[data-mask]").inputmask();
+
+                //Date range as a button
+
+            });
+        </script>
+</div>
+</div>
+{% endif %}
+{% endblock %}
