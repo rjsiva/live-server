@@ -1,0 +1,88 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<div align="right">
+<button class="btn btn-small btn-success" onclick="goBack()">Go Back</button>
+</div>
+<div style="overflow:auto">
+<form id="form3" action='#' method='post' enctype="multipart/form-data" name="frm" overflow-x:scroll>
+{% csrf_token %}
+
+<h2><center><font color="red">GENDER WISE REPORT - BLOCK WISE</font></center></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{district}}</center></font></h3>
+<table border="1" cellpadding="3">
+<tr>
+<th rowspan="2"><center>S.No.</center></th>
+<th rowspan="2"><center>Block</center></th>
+<th rowspan="2"><center>Excel</center></th>
+<th colspan="4"><center>I</center></th>
+<th colspan="4"><center>II</center></th>
+<th colspan="4"><center>III</center></th>
+<th colspan="4"><center>IV</center></th>
+<th colspan="4"><center>V</center></th>
+<th colspan="4"><center>VI</center></th>
+<th colspan="4"><center>VII</center></th>
+<th colspan="4"><center>VIII</center></th>
+<th colspan="4"><center>IX</center></th>
+<th colspan="4"><center>X</center></th>
+<th colspan="4"><center>XI</center></th>
+<th colspan="4"><center>XII</center></th>
+<th colspan="4"><center>TOTAL</center></th>
+
+</tr>
+
+<tr><th>B</th><th>G</th><th>T</th><th><b>Total</b></th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+</tr>
+
+
+{% for xx,yy,blk_c1,blk_c2,blk_c3,blk_c4,blk_c5,blk_c6,blk_c7,blk_c8,blk_c9,blk_c10,blk_c11,blk_c12,blk_c_total,blk_c1_b,blk_c2_b,blk_c3_b,blk_c4_b,blk_c5_b,blk_c6_b,blk_c7_b,blk_c8_b,blk_c9_b,blk_c10_b,blk_c11_b,blk_c12_b,blk_c_total_b,blk_c1_g,blk_c2_g,blk_c3_g,blk_c4_g,blk_c5_g,blk_c6_g,blk_c7_g,blk_c8_g,blk_c9_g,blk_c10_g,blk_c11_g,blk_c12_g,blk_c_total_g,blk_c1_t,blk_c2_t,blk_c3_t,blk_c4_t,blk_c5_t,blk_c6_t,blk_c7_t,blk_c8_t,blk_c9_t,blk_c10_t,blk_c11_t,blk_c12_t,blk_c_total_t  in a_list %}
+
+
+
+<tr><td>{{forloop.counter}}</td>
+<td><button  name="blks" class="btn btn-defaullt btn-lg";   value={{mgmt}},{{xx}},{{1}} type="submit">{{ yy }}</button></td>
+<td><input type="image" src="{{STATIC_URL}}img/excell.png" name="blks" value={{mgmt}},{{xx}},{{2}} alt="Submit">
+</td>
+<td><font color="blue">{{blk_c1_b}}</font></td><td><font color="red">{{blk_c1_g}}</font></td><td>{{blk_c1_t}}</font></td><td><b>{{blk_c1}}</td>
+<td><font color="blue">{{blk_c2_b}}</font></td><td><font color="red">{{blk_c2_g}}</font></td><td>{{blk_c2_t}}</td><td><b>{{blk_c2}}</td>
+<td><font color="blue">{{blk_c3_b}}</font></td><td><font color="red">{{blk_c3_g}}</font></td><td>{{blk_c3_t}}</td><td><b>{{blk_c3}}</td>
+<td><font color="blue">{{blk_c4_b}}</font></td><td><font color="red">{{blk_c4_g}}</font></td><td>{{blk_c4_t}}</td><td><b>{{blk_c4}}</td>
+<td><font color="blue">{{blk_c5_b}}</font></td><td><font color="red">{{blk_c5_g}}</font></td><td>{{blk_c5_t}}</td><td><b>{{blk_c5}}</td>
+<td><font color="blue">{{blk_c6_b}}</font></td><td><font color="red">{{blk_c6_g}}</font></td><td>{{blk_c6_t}}</td><td><b>{{blk_c6}}</td>
+<td><font color="blue">{{blk_c7_b}}</font></td><td><font color="red">{{blk_c7_g}}</font></td><td>{{blk_c7_t}}</td><td><b>{{blk_c7}}</td>
+<td><font color="blue">{{blk_c8_b}}</font></td><td><font color="red">{{blk_c8_g}}</font></td><td>{{blk_c8_t}}</td><td><b>{{blk_c8}}</td>
+<td><font color="blue">{{blk_c9_b}}</font></td><td><font color="red">{{blk_c9_g}}</font></td><td>{{blk_c9_t}}</td><td><b>{{blk_c9}}</td>
+<td><font color="blue">{{blk_c10_b}}</font></td><td><font color="red">{{blk_c10_g}}</font></td><td>{{blk_c10_t}}</td><td><b>{{blk_c10}}</td>
+<td><font color="blue">{{blk_c11_b}}</font></td><td><font color="red">{{blk_c11_g}}</font></td><td>{{blk_c11_t}}</td><td><b>{{blk_c11}}</td>
+<td><font color="blue">{{blk_c12_b}}</font></td><td><font color="red">{{blk_c12_g}}</font></td><td>{{blk_c12_t}}</td><td><b>{{blk_c12}}</td>
+<td><font color="blue">{{blk_c_total_b}}</font></td><td><font color="red">{{blk_c_total_g}}</font></td><td><b>{{blk_c_total_t}}</td><td>{{blk_c_total}}</td>
+
+</tr>
+
+{% endfor %}   
+</table>
+</form>
+</div>
+
+<br>
+<p align="left"><font color="red">*</font> <font color="blue">B - Boys</font>,<font color="red"> G - Girls,</font> T - Transgender</p>
+ {% endblock %}

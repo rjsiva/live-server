@@ -26,6 +26,17 @@ msgstr "மாணவர்கள் பட்டியல்"
 msgid "Create Child Detail"
 msgstr "புதிய மாணவர் விவரங்களை உருவாக்க"
 
+#: templates/students/child_detail/base.html:15
+msgid "Student Pool"
+msgstr "மாணவர் திரட்டு"
+
+#: templates/students/child_detail/base.html:15
+msgid "Section wise List"
+msgstr "வகுப்பு பிரிவு வாரியாக பட்டியல்"
+
+#: templates/students/child_detail/base.html:15
+msgid "Download Application Form"
+msgstr ""
 #: templates/students/child_detail/base.html:21
 msgid "Child Detail Detail"
 msgstr ""

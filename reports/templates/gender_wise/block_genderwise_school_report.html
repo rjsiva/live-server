@@ -1,0 +1,86 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<div align="right">
+<button class="btn btn-small btn-success" onclick="goBack()">Go Back</button>
+</div>
+<div style="overflow:auto">
+
+<h2 ><font color="red"><center>GENDER WISE REPORT - SCHOOL WISE</font></center></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{block_name.block_name}}</center></font></h3>
+
+<table border="1" cellpadding="10">
+<table border="1" cellpadding="3">
+<tr>
+<th rowspan="2"><center>S.No.</center></th>
+<th rowspan="2"><center>School Name</center></th>
+
+<th colspan="4"><center>I</center></th>
+<th colspan="4"><center>II</center></th>
+<th colspan="4"><center>III</center></th>
+<th colspan="4"><center>IV</center></th>
+<th colspan="4"><center>V</center></th>
+<th colspan="4"><center>VI</center></th>
+<th colspan="4"><center>VII</center></th>
+<th colspan="4"><center>VIII</center></th>
+<th colspan="4"><center>IX</center></th>
+<th colspan="4"><center>X</center></th>
+<th colspan="4"><center>XI</center></th>
+<th colspan="4"><center>XII</center></th>
+<th colspan="4"><center>TOTAL</center></th>
+
+</tr>
+
+<tr><th>B</th><th>G</th><th>T</th><th><b>Total</b></th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+</tr>
+
+
+{% for i in g_blk %}
+<tr><td width="5%">{{forloop.counter}}</td>
+<td><a href="/reports/school_level_genderwise/{{i.id}}">{{ i.school.school_code }}</a>----{{ i.school.school_name}}</td>
+
+<td><font color="blue">{{i.c1_b}}</font></td><td><font color="red">{{i.c1_g}}</font></td><td>{{i.c1_t}}</font></td><td><b>{{i.c1}}</td>
+<td><font color="blue">{{i.c2_b}}</font></td><td><font color="red">{{i.c2_g}}</font></td><td>{{i.c2_t}}</td><td><b>{{i.c2}}</td>
+<td><font color="blue">{{i.c3_b}}</font></td><td><font color="red">{{i.c3_g}}</font></td><td>{{i.c3_t}}</td><td><b>{{i.c3}}</td>
+<td><font color="blue">{{i.c4_b}}</font></td><td><font color="red">{{i.c4_g}}</font></td><td>{{i.c4_t}}</td><td><b>{{i.c4}}</td>
+<td><font color="blue">{{i.c5_b}}</font></td><td><font color="red">{{i.c5_g}}</font></td><td>{{i.c5_t}}</td><td><b>{{i.c5}}</td>
+<td><font color="blue">{{i.c6_b}}</font></td><td><font color="red">{{i.c6_g}}</font></td><td>{{i.c6_t}}</td><td><b>{{i.c6}}</td>
+<td><font color="blue">{{i.c7_b}}</font></td><td><font color="red">{{i.c7_g}}</font></td><td>{{i.c7_t}}</td><td><b>{{i.c7}}</td>
+<td><font color="blue">{{i.c8_b}}</font></td><td><font color="red">{{i.c8_g}}</font></td><td>{{i.c8_t}}</td><td><b>{{i.c8}}</td>
+<td><font color="blue">{{i.c9_b}}</font></td><td><font color="red">{{i.c9_g}}</font></td><td>{{i.c9_t}}</td><td><b>{{i.c9}}</td>
+<td><font color="blue">{{i.c10_b}}</font></td><td><font color="red">{{i.c10_g}}</font></td><td>{{i.c10_t}}</td><td><b>{{i.c10}}</td>
+<td><font color="blue">{{i.c11_b}}</font></td><td><font color="red">{{i.c11_g}}</font></td><td>{{i.c11_t}}</td><td><b>{{i.c11}}</td>
+<td><font color="blue">{{i.c12_b}}</font></td><td><font color="red">{{i.c12_g}}</font></td><td>{{i.c12_t}}</td><td><b>{{i.c12}}</td>
+<td><font color="blue">{{i.c_total_b}}</font></td><td><font color="red">{{i.c_total_g}}</font></td><td>{{i.c_total_t}}</td><td><b>{{i.c_total}}</td>
+
+
+
+</tr>
+{% endfor %}   
+ </table>
+</div>
+<br>
+<p align="left"><font color="red">*</font> <font color="blue">B - Boys</font>,<font color="red"> G - Girls,</font> T - Transgender</p>
+
+{% endblock %}
+

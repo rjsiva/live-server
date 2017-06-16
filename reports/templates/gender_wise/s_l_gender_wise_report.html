@@ -1,0 +1,262 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+
+<h2><center><font color="red">GENDER WISE REPORT - STATE LEVEL </font></center></h2>
+<div style="overflow:auto">
+
+<form id="form3" action='#' method='post' enctype="multipart/form-data" name="frm">
+{% csrf_token %}
+
+<h2><center><font color="green">Directorate  of School Education</font></center></h2>
+
+<table border="2" cellpadding="5">
+<tr>
+<th rowspan="2"><center>Management</center></th>
+<th rowspan="2"><center>Excel</center></th>
+<th colspan="4"><center>I</center></th>
+<th colspan="4"><center>II</center></th>
+<th colspan="4"><center>III</center></th>
+<th colspan="4"><center>IV</center></th>
+<th colspan="4"><center>V</center></th>
+<th colspan="4"><center>VI</center></th>
+<th colspan="4"><center>VII</center></th>
+<th colspan="4"><center>VIII</center></th>
+<th colspan="4"><center>IX</center></th>
+<th colspan="4"><center>X</center></th>
+<th colspan="4"><center>XI</center></th>
+<th colspan="4"><center>XII</center></th>
+<th colspan="4"><center>TOTAL</center></th>
+
+</tr>
+
+<tr><center><th>B</th><th>G</th><th>T</th><th><b>Total</b></th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th></center>
+</tr>
+<tr><td> 
+	<button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value=1,1 >Government</button></td>
+	<td><input type="image" src="{{STATIC_URL}}img/excell.png" name="distt" value=1,2 alt="Submit"></td>
+    <td><font color="blue">{{ds_g_c1_b}}</font></td><td><font color="red">{{ds_g_c1_g}}</font></td><td>{{ds_g_c1_t}}</td><td ><b>{{ds_g_c1}}</b></td>
+	<td><font color="blue">{{ds_g_c2_b}}</font></td><td><font color="red">{{ds_g_c2_g}}</font></td><td>{{ds_g_c2_t}}</td><td ><b>{{ds_g_c2}}</td>
+	<td><font color="blue">{{ds_g_c3_b}}</font></td><td><font color="red">{{ds_g_c3_g}}</font></td><td>{{ds_g_c3_t}}</td><td ><b>{{ds_g_c3}}</td>
+	<td><font color="blue">{{ds_g_c4_b}}</font></td><td><font color="red">{{ds_g_c4_g}}</font></td><td>{{ds_g_c4_t}}</td><td ><b>{{ds_g_c4}}</td>
+	<td><font color="blue">{{ds_g_c5_b}}</font></td><td><font color="red">{{ds_g_c5_g}}</font></td><td>{{ds_g_c5_t}}</td><td ><b>{{ds_g_c5}}</td>
+	<td><font color="blue">{{ds_g_c6_b}}</font></td><td><font color="red">{{ds_g_c6_g}}</font></td><td>{{ds_g_c6_t}}</td><td ><b>{{ds_g_c6}}</td>
+	<td><font color="blue">{{ds_g_c7_b}}</font></td><td><font color="red">{{ds_g_c7_g}}</font></td><td>{{ds_g_c7_t}}</td><td ><b>{{ds_g_c7}}</td>
+	<td><font color="blue">{{ds_g_c8_b}}</font></td><td><font color="red">{{ds_g_c8_g}}</font></td><td>{{ds_g_c8_t}}</td><td ><b>{{ds_g_c8}}</td>
+	<td><font color="blue">{{ds_g_c9_b}}</font></td><td><font color="red">{{ds_g_c9_g}}</font></td><td>{{ds_g_c9_t}}</td><td ><b>{{ds_g_c9}}</td>
+	<td><font color="blue">{{ds_g_c10_b}}</font></td><td><font color="red">{{ds_g_c10_g}}</font></td><td>{{ds_g_c10_t}}</td><td ><b>{{ds_g_c10}}</td>
+	<td><font color="blue">{{ds_g_c11_b}}</font></td><td><font color="red">{{ds_g_c11_g}}</font></td><td>{{ds_g_c11_t}}</td><td ><b>{{ds_g_c11}}</td>
+	<td><font color="blue">{{ds_g_c12_b}}</font></td><td><font color="red">{{ds_g_c12_g}}</font></td><td>{{ds_g_c12_t}}</td><td ><b>{{ds_g_c12}}</td>
+	<td><font color="blue">{{ds_g_c_total_b}}</font></td><td><font color="red">{{ds_g_c_total_g}}</font></td><td>{{ds_g_c_total_t}}</td><td ><b>{{ds_g_c_total}}</td>
+</tr>
+
+<tr><td><button name="distt" class="btn btn-defaullt btn-lg"; type="submit" value=2,1>Pvt Aided</button></td>
+	<td><input type="image" src="{{STATIC_URL}}img/excell.png" name="distt" value=1,2 alt="Submit"></td>
+    <td><font color="blue">{{ds_pa_c1_b}}</font></td><td><font color="red">{{ds_pa_c1_g}}</font></td><td>{{ds_pa_c1_t}}</td><td ><b>{{ds_pa_c1}}</b></td>
+	<td><font color="blue">{{ds_pa_c2_b}}</font></td><td><font color="red">{{ds_pa_c2_g}}</font></td><td>{{ds_pa_c2_t}}</td><td ><b>{{ds_pa_c2}}</td>
+	<td><font color="blue">{{ds_pa_c3_b}}</font></td><td><font color="red">{{ds_pa_c3_g}}</font></td><td>{{ds_pa_c3_t}}</td><td ><b>{{ds_pa_c3}}</td>
+	<td><font color="blue">{{ds_pa_c4_b}}</font></td><td><font color="red">{{ds_pa_c4_g}}</font></td><td>{{ds_pa_c4_t}}</td><td ><b>{{ds_pa_c4}}</td>
+	<td><font color="blue">{{ds_pa_c5_b}}</font></td><td><font color="red">{{ds_pa_c5_g}}</font></td><td>{{ds_pa_c5_t}}</td><td ><b>{{ds_pa_c5}}</td>
+	<td><font color="blue">{{ds_pa_c6_b}}</font></td><td><font color="red">{{ds_pa_c6_g}}</font></td><td>{{ds_pa_c6_t}}</td><td ><b>{{ds_pa_c6}}</td>
+	<td><font color="blue">{{ds_pa_c7_b}}</font></td><td><font color="red">{{ds_pa_c7_g}}</font></td><td>{{ds_pa_c7_t}}</td><td ><b>{{ds_pa_c7}}</td>
+	<td><font color="blue">{{ds_pa_c8_b}}</font></td><td><font color="red">{{ds_pa_c8_g}}</font></td><td>{{ds_pa_c8_t}}</td><td ><b>{{ds_pa_c8}}</td>
+	<td><font color="blue">{{ds_pa_c9_b}}</font></td><td><font color="red">{{ds_pa_c9_g}}</font></td><td>{{ds_pa_c9_t}}</td><td ><b>{{ds_pa_c9}}</td>
+	<td><font color="blue">{{ds_pa_c10_b}}</font></td><td><font color="red">{{ds_pa_c10_g}}</font></td><td>{{ds_pa_c10_t}}</td><td ><b>{{ds_pa_c10}}</td>
+	<td><font color="blue">{{ds_pa_c11_b}}</font></td><td><font color="red">{{ds_pa_c11_g}}</font></td><td>{{ds_pa_c11_t}}</td><td ><b>{{ds_pa_c11}}</td>
+	<td><font color="blue">{{ds_pa_c12_b}}</font></td><td><font color="red">{{ds_pa_c12_g}}</font></td><td>{{ds_pa_c12_t}}</td><td ><b>{{ds_pa_c12}}</td>
+	<td><font color="blue">{{ds_pa_c_total_b}}</font></td><td><font color="red">{{ds_pa_c_total_g}}</font></td><td>{{ds_pa_c_total_t}}</td><td ><b>{{ds_pa_c_total}}</td>
+</tr>
+<tr><td><button name="distt" class="btn btn-defaullt btn-lg"; type="submit" value=3,1>Pvt UnAided </button></td>
+	<td><input type="image" src="{{STATIC_URL}}img/excell.png" name="distt" value=1,2 alt="Submit"></td>
+    <td><font color="blue">{{ds_pua_c1_b}}</font></td><td><font color="red">{{ds_pua_c1_g}}</font></td><td>{{ds_pua_c1_t}}</td><td ><b>{{ds_pua_c1}}</b></td>
+	<td><font color="blue">{{ds_pua_c2_b}}</font></td><td><font color="red">{{ds_pua_c2_g}}</font></td><td>{{ds_pua_c2_t}}</td><td ><b>{{ds_pua_c2}}</td>
+	<td><font color="blue">{{ds_pua_c3_b}}</font></td><td><font color="red">{{ds_pua_c3_g}}</font></td><td>{{ds_pua_c3_t}}</td><td ><b>{{ds_pua_c3}}</td>
+	<td><font color="blue">{{ds_pua_c4_b}}</font></td><td><font color="red">{{ds_pua_c4_g}}</font></td><td>{{ds_pua_c4_t}}</td><td ><b>{{ds_pua_c4}}</td>
+	<td><font color="blue">{{ds_pua_c5_b}}</font></td><td><font color="red">{{ds_pua_c5_g}}</font></td><td>{{ds_pua_c5_t}}</td><td ><b>{{ds_pua_c5}}</td>
+	<td><font color="blue">{{ds_pua_c6_b}}</font></td><td><font color="red">{{ds_pua_c6_g}}</font></td><td>{{ds_pua_c6_t}}</td><td ><b>{{ds_pua_c6}}</td>
+	<td><font color="blue">{{ds_pua_c7_b}}</font></td><td><font color="red">{{ds_pua_c7_g}}</font></td><td>{{ds_pua_c7_t}}</td><td ><b>{{ds_pua_c7}}</td>
+	<td><font color="blue">{{ds_pua_c8_b}}</font></td><td><font color="red">{{ds_pua_c8_g}}</font></td><td>{{ds_pua_c8_t}}</td><td ><b>{{ds_pua_c8}}</td>
+	<td><font color="blue">{{ds_pua_c9_b}}</font></td><td><font color="red">{{ds_pua_c9_g}}</font></td><td>{{ds_pua_c9_t}}</td><td ><b>{{ds_pua_c9}}</td>
+	<td><font color="blue">{{ds_pua_c10_b}}</font></td><td><font color="red">{{ds_pua_c10_g}}</font></td><td>{{ds_pua_c10_t}}</td><td ><b>{{ds_pua_c10}}</td>
+	<td><font color="blue">{{ds_pua_c11_b}}</font></td><td><font color="red">{{ds_pua_c11_g}}</font></td><td>{{ds_pua_c11_t}}</td><td ><b>{{ds_pua_c11}}</td>
+	<td><font color="blue">{{ds_pua_c12_b}}</font></td><td><font color="red">{{ds_pua_c12_g}}</font></td><td>{{ds_pua_c12_t}}</td><td ><b>{{ds_pua_c12}}</td>
+	<td><font color="blue">{{ds_pua_c_total_b}}</font></td><td><font color="red">{{ds_pua_c_total_g}}</font></td><td>{{ds_pua_c_total_t}}</td><td ><b>{{ds_pua_c_total}}</td>
+</tr>
+
+<tr><td><button name="distt" class="btn btn-defaullt btn-lg"; type="submit" value=5,1>CBSE/ICSE</button></td>
+	<td><input type="image" src="{{STATIC_URL}}img/excell.png" name="distt" value=1,2 alt="Submit"></td>
+    <td><font color="blue">{{cbse_c1_b}}</font></td><td><font color="red">{{cbse_c1_g}}</font></td><td>{{cbse_c1_t}}</td><td ><b>{{cbse_c1}}</b></td>
+	<td><font color="blue">{{cbse_c2_b}}</font></td><td><font color="red">{{cbse_c2_g}}</font></td><td>{{cbse_c2_t}}</td><td ><b>{{cbse_c2}}</td>
+	<td><font color="blue">{{cbse_c3_b}}</font></td><td><font color="red">{{cbse_c3_g}}</font></td><td>{{cbse_c3_t}}</td><td ><b>{{cbse_c3}}</td>
+	<td><font color="blue">{{cbse_c4_b}}</font></td><td><font color="red">{{cbse_c4_g}}</font></td><td>{{cbse_c4_t}}</td><td ><b>{{cbse_c4}}</td>
+	<td><font color="blue">{{cbse_c5_b}}</font></td><td><font color="red">{{cbse_c5_g}}</font></td><td>{{cbse_c5_t}}</td><td ><b>{{cbse_c5}}</td>
+	<td><font color="blue">{{cbse_c6_b}}</font></td><td><font color="red">{{cbse_c6_g}}</font></td><td>{{cbse_c6_t}}</td><td ><b>{{cbse_c6}}</td>
+	<td><font color="blue">{{cbse_c7_b}}</font></td><td><font color="red">{{cbse_c7_g}}</font></td><td>{{cbse_c7_t}}</td><td ><b>{{cbse_c7}}</td>
+	<td><font color="blue">{{cbse_c8_b}}</font></td><td><font color="red">{{cbse_c8_g}}</font></td><td>{{cbse_c8_t}}</td><td ><b>{{cbse_c8}}</td>
+	<td><font color="blue">{{cbse_c9_b}}</font></td><td><font color="red">{{cbse_c9_g}}</font></td><td>{{cbse_c9_t}}</td><td ><b>{{cbse_c9}}</td>
+	<td><font color="blue">{{cbse_c10_b}}</font></td><td><font color="red">{{cbse_c10_g}}</font></td><td>{{cbse_c10_t}}</td><td ><b>{{cbse_c10}}</td>
+	<td><font color="blue">{{cbse_c11_b}}</font></td><td><font color="red">{{cbse_c11_g}}</font></td><td>{{cbse_c11_t}}</td><td ><b>{{cbse_c11}}</td>
+	<td><font color="blue">{{cbse_c12_b}}</font></td><td><font color="red">{{cbse_c12_g}}</font></td><td>{{cbse_c12_t}}</td><td ><b>{{cbse_c12}}</td>
+	<td><font color="blue">{{cbse_c_total_b}}</font></td><td><font color="red">{{cbse_c_total_g}}</td><td>{{cbse_c_total_t}}</td><td ><b>{{cbse_c_total}}</td>
+</tr>
+</table>
+
+<h2><center><font color="green">Directorate  of Elementary Education</font></center></h2>
+
+<table border="2" cellpadding="5">
+<tr>
+<th rowspan="2"><center>Management</th></center>
+<th rowspan="2"><center>Excel</center></th>
+<th colspan="4"><center>I</center></th>
+<th colspan="4"><center>II</center></th>
+<th colspan="4"><center>III</center></th>
+<th colspan="4"><center>IV</center></th>
+<th colspan="4"><center>V</center></th>
+<th colspan="4"><center>VI</center></th>
+<th colspan="4"><center>VII</center></th>
+<th colspan="4"><center>VIII</center></th>
+<th colspan="4"><center>IX</center></th>
+<th colspan="4"><center>X</center></th>
+<th colspan="4"><center>XI</center></th>
+<th colspan="4"><center>XII</center></th>
+<th colspan="4"><center>TOTAL</center></th>
+
+</tr>
+
+<tr><th>B</th><th>G</th><th>T</th><th><b>Total</b></th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+</tr>
+<tr><td><button name="distt" class="btn btn-defaullt btn-lg"; type="submit" value=6,1>Government</button></td>
+	<td><input type="image" src="{{STATIC_URL}}img/excell.png" name="distt" value=1,2 alt="Submit"></td>
+    <td><font color="blue">{{dee_g_c1_b}}</font></td><td><font color="red">{{dee_g_c1_g}}</font></td><td>{{dee_g_c1_t}}</td><td ><b>{{dee_g_c1}}</b></td>
+	<td><font color="blue">{{dee_g_c2_b}}</font></td><td><font color="red">{{dee_g_c2_g}}</font></td><td>{{dee_g_c2_t}}</td><td ><b>{{dee_g_c2}}</td>
+	<td><font color="blue">{{dee_g_c3_b}}</font></td><td><font color="red">{{dee_g_c3_g}}</font></td><td>{{dee_g_c3_t}}</td><td ><b>{{dee_g_c3}}</td>
+	<td><font color="blue">{{dee_g_c4_b}}</font></td><td><font color="red">{{dee_g_c4_g}}</font></td><td>{{dee_g_c4_t}}</td><td ><b>{{dee_g_c4}}</td>
+	<td><font color="blue">{{dee_g_c5_b}}</font></td><td><font color="red">{{dee_g_c5_g}}</font></td><td>{{dee_g_c5_t}}</td><td ><b>{{dee_g_c5}}</td>
+	<td><font color="blue">{{dee_g_c6_b}}</font></td><td><font color="red">{{dee_g_c6_g}}</font></td><td>{{dee_g_c6_t}}</td><td ><b>{{dee_g_c6}}</td>
+	<td><font color="blue">{{dee_g_c7_b}}</font></td><td><font color="red">{{dee_g_c7_g}}</font></td><td>{{dee_g_c7_t}}</td><td ><b>{{dee_g_c7}}</td>
+	<td><font color="blue">{{dee_g_c8_b}}</font></td><td><font color="red">{{dee_g_c8_g}}</font></td><td>{{dee_g_c8_t}}</td><td ><b>{{dee_g_c8}}</td>
+	<td><font color="blue">{{dee_g_c9_b}}</font></td><td><font color="red">{{dee_g_c9_g}}</font></td><td>{{dee_g_c9_t}}</td><td ><b>{{dee_g_c9}}</td>
+	<td><font color="blue">{{dee_g_c10_b}}</font></td><td><font color="red">{{dee_g_c10_g}}</font></td><td>{{dee_g_c10_t}}</td><td ><b>{{dee_g_c10}}</td>
+	<td><font color="blue">{{dee_g_c11_b}}</font></td><td><font color="red">{{dee_g_c11_g}}</font></td><td>{{dee_g_c11_t}}</td><td ><b>{{dee_g_c11}}</td>
+	<td><font color="blue">{{dee_g_c12_b}}</font></td><td><font color="red">{{dee_g_c12_g}}</font></td><td>{{dee_g_c12_t}}</td><td ><b>{{dee_g_c12}}</td>
+	<td><font color="blue">{{dee_g_c_total_b}}</font></td><td><font color="red">{{dee_g_c_total_g}}</font></td><td>{{dee_g_c_total_t}}</td><td ><b>{{dee_g_c_total}}</td>
+</tr>
+<tr><td><button name="distt" class="btn btn-defaullt btn-lg"; type="submit" value=7,1>Pvt Aided</button></td>
+	<td><input type="image" src="{{STATIC_URL}}img/excell.png" name="distt" value=1,2 alt="Submit"></td>
+    <td><font color="blue">{{dee_pa_c1_b}}</font></td><td><font color="red">{{dee_pa_c1_g}}</font></td><td>{{dee_pa_c1_t}}</td><td ><b>{{dee_pa_c1}}</b></td>
+	<td><font color="blue">{{dee_pa_c2_b}}</font></td><td><font color="red">{{dee_pa_c2_g}}</font></td><td>{{dee_pa_c2_t}}</td><td ><b>{{dee_pa_c2}}</td>
+	<td><font color="blue">{{dee_pa_c3_b}}</font></td><td><font color="red">{{dee_pa_c3_g}}</font></td><td>{{dee_pa_c3_t}}</td><td ><b>{{dee_pa_c3}}</td>
+	<td><font color="blue">{{dee_pa_c4_b}}</font></td><td><font color="red">{{dee_pa_c4_g}}</font></td><td>{{dee_pa_c4_t}}</td><td ><b>{{dee_pa_c4}}</td>
+	<td><font color="blue">{{dee_pa_c5_b}}</font></td><td><font color="red">{{dee_pa_c5_g}}</font></td><td>{{dee_pa_c5_t}}</td><td ><b>{{dee_pa_c5}}</td>
+	<td><font color="blue">{{dee_pa_c6_b}}</font></td><td><font color="red">{{dee_pa_c6_g}}</font></td><td>{{dee_pa_c6_t}}</td><td ><b>{{dee_pa_c6}}</td>
+	<td>{{dee_pa_c7_b}}</font></td><td><font color="red">{{dee_pa_c7_g}}</font></td><td>{{dee_pa_c7_t}}</td><td ><b>{{dee_pa_c7}}</td>
+	<td><font color="blue">{{dee_pa_c8_b}}</font></td><td><font color="red">{{dee_pa_c8_g}}</font></td><td>{{dee_pa_c8_t}}</td><td ><b>{{dee_pa_c8}}</td>
+	<td><font color="blue">{{dee_pa_c9_b}}</font></td><td><font color="red">{{dee_pa_c9_g}}</font></td><td>{{dee_pa_c9_t}}</td></font><td ><b>{{dee_pa_c9}}</td>
+	<td><font color="blue">{{dee_pa_c10_b}}</font></td><td><font color="red">{{dee_pa_c10_g}}</font></td><td>{{dee_pa_c10_t}}</td><td ><b>{{dee_pa_c10}}</td>
+	<td><font color="blue">{{dee_pa_c11_b}}</font></td><td><font color="red">{{dee_pa_c11_g}}</font></td><td>{{dee_pa_c11_t}}</td><td ><b>{{dee_pa_c11}}</td>
+	<td><font color="blue">{{dee_pa_c12_b}}</font></td><td><font color="red">{{dee_pa_c12_g}}</font></td><td>{{dee_pa_c12_t}}</td><td ><b>{{dee_pa_c12}}</td>
+	<td><font color="blue">{{dee_pa_c_total_b}}</font></td><td><font color="red">{{dee_pa_c_total_g}}</font></td><td>{{dee_pa_c_total_t}}</td><td ><b>{{dee_pa_c_total}}</td>
+</tr>
+
+<tr><td><button name="distt" class="btn btn-defaullt btn-lg"; type="submit" value=8,1>Pvt UnAided</button></td>
+	<td><input type="image" src="{{STATIC_URL}}img/excell.png" name="distt" value=1,2 alt="Submit"></td>
+    <td><font color="blue">{{dee_pua_c1_b}}</font></td><td><font color="red">{{dee_pua_c1_g}}</font></td><td>{{dee_pua_c1_t}}</td><td ><b>{{dee_pua_c1}}</b></td>
+	<td><font color="blue">{{dee_pua_c2_b}}</font></td><td><font color="red">{{dee_pua_c2_g}}</font></td><td>{{dee_pua_c2_t}}</td><td ><b>{{dee_pua_c2}}</td>
+	<td><font color="blue">{{dee_pua_c3_b}}</font></td><td><font color="red">{{dee_pua_c3_g}}</font></td><td>{{dee_pua_c3_t}}</td><td ><b>{{dee_pua_c3}}</td>
+	<td><font color="blue">{{dee_pua_c4_b}}</font></td><td><font color="red">{{dee_pua_c4_g}}</font></td><td>{{dee_pua_c4_t}}</td><td ><b>{{dee_pua_c4}}</td>
+	<td><font color="blue">{{dee_pua_c5_b}}</font></td><td><font color="red">{{dee_pua_c5_g}}</font></td><td>{{dee_pua_c5_t}}</td><td ><b>{{dee_pua_c5}}</td>
+	<td><font color="blue">{{dee_pua_c6_b}}</font></td><td><font color="red">{{dee_pua_c6_g}}</font></td><td>{{dee_pua_c6_t}}</td><td ><b>{{dee_pua_c6}}</td>
+	<td><font color="blue">{{dee_pua_c7_b}}</font></td><td><font color="red">{{dee_pua_c7_g}}</font></td><td>{{dee_pua_c7_t}}</td><td ><b>{{dee_pua_c7}}</td>
+	<td><font color="blue">{{dee_pua_c8_b}}</font></td><td><font color="red">{{dee_pua_c8_g}}</font></td><td>{{dee_pua_c8_t}}</td><td ><b>{{dee_pua_c8}}</td>
+	<td><font color="blue">{{dee_pua_c9_b}}</font></td><td><font color="red">{{dee_pua_c9_g}}</font></td><td>{{dee_pua_c9_t}}</td><td ><b>{{dee_pua_c9}}</td>
+	<td><font color="blue">{{dee_pua_c10_b}}</font></td><td><font color="red">{{dee_pua_c10_g}}</font></td><td>{{dee_pua_c10_t}}</td><td ><b>{{dee_pua_c10}}</td>
+	<td><font color="blue">{{dee_pua_c11_b}}</font></td><td><font color="red">{{dee_pua_c11_g}}</font></td><td>{{dee_pua_c11_t}}</td><td ><b>{{dee_pua_c11}}</td>
+	<td><font color="blue">{{dee_pua_c12_b}}</font></td><td><font color="red">{{dee_pua_c12_g}}</font></td><td>{{dee_pua_c12_t}}</td><td ><b>{{dee_pua_c12}}</td>
+	<td><font color="blue">{{dee_pua_c_total_b}}</font></td><td><font color="red">{{dee_pua_c_total_g}}</td><td>{{dee_pua_c_total_t}}</td><td ><b>{{dee_pua_c_total}}</td>
+</tr>
+
+</table>
+
+<h2><center><font color="green">Directorate  of Matriculation</font></center></h2>
+
+<table border="2" cellpadding="5">
+<tr>
+<th rowspan="2"><center>Management</th></center>
+<th rowspan="2"><center>Excel</center></th>
+<th colspan="4"><center>I</center></th>
+<th colspan="4"><center>II</center></th>
+<th colspan="4"><center>III</center></th>
+<th colspan="4"><center>IV</center></th>
+<th colspan="4"><center>V</center></th>
+<th colspan="4"><center>VI</center></th>
+<th colspan="4"><center>VII</center></th>
+<th colspan="4"><center>VIII</center></th>
+<th colspan="4"><center>IX</center></th>
+<th colspan="4"><center>X</center></th>
+<th colspan="4"><center>XI</center></th>
+<th colspan="4"><center>XII</center></th>
+<th colspan="4"><center>TOTAL</center></th>
+
+</tr>
+
+<tr><th>B</th><th>G</th><th>T</th><th><b>Total</b></th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+</tr>
+<tr><td><button name="distt" class="btn btn-defaullt btn-lg"; type="submit" value=4,1>Matriculation</button></td>
+	<td><input type="image" src="{{STATIC_URL}}img/excell.png" name="distt" value=1,2 alt="Submit"></td>
+    <td><font color="blue">{{m_c1_b}}</font></td><td><font color="red">{{m_c1_g}}</font></td><td>{{m_c1_t}}</td><td ><b>{{m_c1}}</b></td>
+	<td><font color="blue">{{m_c2_b}}</font></td><td><font color="red">{{m_c2_g}}</font></td><td>{{m_c2_t}}</td><td ><b>{{m_c2}}</td>
+	<td><font color="blue">{{m_c3_b}}</font></td><td><font color="red">{{m_c3_g}}</font></td><td>{{m_c3_t}}</td><td ><b>{{m_c3}}</td>
+	<td><font color="blue">{{m_c4_b}}</font></td><td><font color="red">{{m_c4_g}}</font></td><td>{{m_c4_t}}</td><td ><b>{{m_c4}}</td>
+	<td><font color="blue">{{m_c5_b}}</font></td><td><font color="red">{{m_c5_g}}</font></td><td>{{m_c5_t}}</td><td ><b>{{m_c5}}</td>
+	<td><font color="blue">{{m_c6_b}}</font></td><td><font color="red">{{m_c6_g}}</font></td><td>{{m_c6_t}}</td><td ><b>{{m_c6}}</td>
+	<td><font color="blue">{{m_c7_b}}</font></td><td><font color="red">{{m_c7_g}}</font></td><td>{{m_c7_t}}</td><td ><b>{{m_c7}}</td>
+	<td><font color="blue">{{m_c8_b}}</font></td><td><font color="red">{{m_c8_g}}</font></td><td>{{m_c8_t}}</td><td ><b>{{m_c8}}</td>
+	<td><font color="blue">{{m_c9_b}}</font></td><td><font color="red">{{m_c9_g}}</font></td><td>{{m_c9_t}}</td><td ><b>{{m_c9}}</td>
+	<td><font color="blue">{{m_c10_b}}</font></td><td><font color="red">{{m_c10_g}}</font></td><td>{{m_c10_t}}</td><td ><b>{{m_c10}}</td>
+	<td><font color="blue">{{m_c11_b}}</font></td><td><font color="red">{{m_c11_g}}</font></td><td>{{m_c11_t}}</td><td ><b>{{m_c11}}</td>
+	<td><font color="blue">{{m_c12_b}}</font></td><td><font color="red">{{m_c12_g}}</font></td><td>{{m_c12_t}}</td><td ><b>{{m_c12}}</td>
+	<td><font color="blue">{{m_c_total_b}}</font></td><td><font color="red">{{m_c_total_g}}</font></td><td>{{m_c_total_t}}</td><td ><b>{{m_c_total}}</td>
+</tr>
+
+</table>
+</div>
+<br>
+<p align="left"><font color="red">*</font> <font color="blue">B - Boys</font>,<font color="red"> G - Girls,</font> T - Transgender</p>
+  
+{% endblock %}

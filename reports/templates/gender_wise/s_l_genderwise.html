@@ -1,0 +1,41 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<div align="right">
+<button class="btn btn-small btn-success" onclick="goBack()">Go Back</button>
+</div>
+<div style="overflow:auto">
+
+<h2 ><font color="red"><center>GENDER WISE REPORT</font></center></h2>
+
+<h3><center><font color='blue'>{{gender.school.school_name}}</font></center>
+<br>
+<table border="1" cellpadding="5">
+<tr>
+<th><center>Standard</center></th>
+<th><center>Boys</center></th>
+<th><center>Girls</center></th>
+<th><center>Transgender</center></th>
+<th><center>Total</center></th><tr>
+<tr><td>I</td><td><font color="blue">{{gender.c1_b}}</font></td><td><font color="red">{{gender.c1_g}}</font></td><td>{{gender.c1_t}}</td><td><b>{{gender.c1}}</td></tr>
+<tr><td>II</td><td><font color="blue">{{gender.c2_b}}</font></td><td><font color="red">{{gender.c2_g}}</font></td><td>{{gender.c2_t}}</td><td><b>{{gender.c2}}</td></tr>
+<tr><td>III</td><td><font color="blue">{{gender.c3_b}}</font></td><td><font color="red">{{gender.c3_g}}</font></td><td>{{gender.c3_t}}</td><td><b>{{gender.c3}}</td></tr>
+<tr><td>IV</td><td><font color="blue">{{gender.c4_b}}</font></td><td><font color="red">{{gender.c4_g}}</font></td><td>{{gender.c4_t}}</td><td><b>{{gender.c4}}</td></tr>
+<tr><td>V</td><td><font color="blue">{{gender.c5_b}}</font></td><td><font color="red">{{gender.c5_g}}</font></td><td>{{gender.c5_t}}</td><td><b>{{gender.c5}}</td></tr>
+<tr><td>VI</td><td><font color="blue">{{gender.c6_b}}</font></td><td><font color="red">{{gender.c6_g}}</font></td><td>{{gender.c6_t}}</td><td><b>{{gender.c6}}</td></tr>
+<tr><td>VII</td><td><font color="blue">{{gender.c7_b}}</font></td><td><font color="red">{{gender.c7_g}}</font></td><td>{{gender.c7_t}}</td><td><b>{{gender.c7}}</td></tr>
+<tr><td>VIII</td><td><font color="blue">{{gender.c8_b}}</font></td><td><font color="red">{{gender.c8_g}}</font></td><td>{{gender.c8_t}}</td><td><b>{{gender.c8}}</td></tr>
+<tr><td>IX</td><td><font color="blue">{{gender.c9_b}}</font></td><td><font color="red">{{gender.c9_g}}</font></td><td>{{gender.c9_t}}</td><td><b>{{gender.c9}}</td></tr>
+<tr><td>X</td><td><font color="blue">{{gender.c10_b}}</font></td><td><font color="red">{{gender.c10_g}}</font></td><td>{{gender.c10_t}}</td><td><b>{{gender.c10}}</td></tr>
+<tr><td>XI</td><td><font color="blue">{{gender.c11_b}}</font></td><td><font color="red">{{gender.c11_g}}</font></td><td>{{gender.c11_t}}</td><td><b>{{gender.c11}}</td></tr>
+<tr><td>XII</td><td><font color="blue">{{gender.c12_b}}</font></td><td><font color="red">{{gender.c12_g}}</font></td><td>{{gender.c12_t}}</td><td><b>{{gender.c12}}</td></tr>
+<tr><td>Total</td><td><b><font color="blue">{{gender.c_total_b}}</font></td><td><b><font color="red">{{gender.c_total_g}}</font></td><td><b>{{gender.c_total_t}}</td><td><b>{{gender.c_total}}</td></tr>
+</table>
+</div>
+{% endblock %}

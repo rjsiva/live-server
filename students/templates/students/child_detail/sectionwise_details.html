@@ -19,7 +19,7 @@
       <th style="text-align:center;font-size: 15px;">S.No.</th>
       <th style="text-align:center;font-size: 15px;">Name</th>
       <th style="text-align:center;font-size: 15px;">Unique ID No.</th>
-      <th style="text-align:center;font-size: 15px;">Class Studying</th>
+      <th style="text-align:center;font-size: 15px;">Class</th>
       <th style="text-align:center;font-size: 15px;">Father's Name</th>
       <th style="text-align:center;font-size: 15px;">DOB</th>
       <th style="text-align:center;font-size: 15px;">Aadhaar No.</th>
@@ -45,8 +45,8 @@
 
           <td style="width:230px">
             <div >
-                {% if detail.photo %}
-                <img src="{{MEDIA_URL}}{{detail.photo}}" width="40" height="50">
+                {% if detail.photograph %}
+                <img src="{{MEDIA_URL}}{{detail.photograph}}" width="40" height="50">
                 {%else%}
                 <img src="{{STATIC_URL}}img/student.png" width="40" height="50"/>
                 {%endif%}</div></td>

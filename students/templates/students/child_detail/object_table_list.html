@@ -6,6 +6,10 @@
 {% load imagekit %}
 {% block content %}
 
+{% if user.account.user_category.user_category == 'school' %}
+<p ><center><a href='{% url "Download_School_Profile" %}' style="color:#8E4585; font-size:20;">Download Overall Student Profile</a></center>
+{% endif %}
+<br>
 
 <table class='table table-bordered table-striped2' border="2" align="center">
 

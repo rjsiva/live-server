@@ -1,0 +1,89 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<div align="right">
+<button class="btn btn-small btn-success" onclick="goBack()">Go Back</button>
+</div>
+<div style="overflow:auto">
+
+
+<input type="hidden" value="{{di_id}}" name="mgmt"> 
+
+<h2><center><font color="red">GENDER WISE REPORT - DISTRICT WISE</center></font></h2>
+ 
+<h3><center><font color="green">{{dd}}</font></center></h3>
+
+<table border="1" cellpadding="10">
+<table border="2" cellpadding="5">
+<tr>
+<th rowspan="2"><center>S.No.</center></th>
+<th rowspan="2"><center>District</center></th>
+<th rowspan="2"><center>Excel</center></th>
+<th colspan="4"><center>I</center></th>
+<th colspan="4"><center>II</center></th>
+<th colspan="4"><center>III</center></th>
+<th colspan="4"><center>IV</center></th>
+<th colspan="4"><center>V</center></th>
+<th colspan="4"><center>VI</center></th>
+<th colspan="4"><center>VII</center></th>
+<th colspan="4"><center>VIII</center></th>
+<th colspan="4"><center>IX</center></th>
+<th colspan="4"><center>X</center></th>
+<th colspan="4"><center>XI</center></th>
+<th colspan="4"><center>XII</center></th>
+<th colspan="4"><center>TOTAL</center></th>
+
+</tr>
+
+<tr><th>B</th><th>G</th><th>T</th><th><b>Total</b></th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+	<th>B</th><th>G</th><th>T</th><th>Total</th>
+</tr>
+
+{% for xx,yy,dt_c1_b,dt_c1_g,dt_c1_t,dt_c1,dt_c2_b,dt_c2_g,dt_c2_t,dt_c2,dt_c3_b,dt_c3_g,dt_c3_t,dt_c3,dt_c4_b,dt_c4_g,dt_c4_t,dt_c4,dt_c5_b,dt_c5_g,dt_c5_t,dt_c5,dt_c6_b,dt_c6_g,dt_c6_t,dt_c6,dt_c7_b,dt_c7_g,dt_c7_t,dt_c7,dt_c8_b,dt_c8_g,dt_c8_t,dt_c8,dt_c9_b,dt_c9_g,dt_c9_t,dt_c9,dt_c10_b,dt_c10_g,dt_c10_t,dt_c10,dt_c11_b,dt_c11_g,dt_c11_t,dt_c11,dt_c12_b,dt_c12_g,dt_c12_t,dt_c12,dt_c_total_b,dt_c_total_g,dt_c_total_t,dt_c_total  in a_list %}
+
+
+<tr><td>{{forloop.counter}}</td>
+
+<td>
+	<a href="/reports/block_overall_genderwise_report/{{ xx }}/{{di_id}}/2">{{ yy }}</a></td><td>
+<a href="/reports/block_overall_genderwise_report/{{ xx }}/{{di_id}}/1"><img src="{{STATIC_URL}}img/excell.png"/></a></td>
+<td><font color="blue">{{dt_c1_b}}</font></td><td><font color="red">{{dt_c1_g}}</font></td><td>{{dt_c1_t}}</font></td><td><b>{{dt_c1}}</td>
+<td><font color="blue">{{dt_c2_b}}</font></td><td><font color="red">{{dt_c2_g}}</font></td><td>{{dt_c2_t}}</td><td><b>{{dt_c2}}</td>
+<td><font color="blue">{{dt_c3_b}}</font></td><td><font color="red">{{dt_c3_g}}</font></td><td>{{dt_c3_t}}</td><td><b>{{dt_c3}}</td>
+<td><font color="blue">{{dt_c4_b}}</font></td><td><font color="red">{{dt_c4_g}}</font></td><td>{{dt_c4_t}}</td><td><b>{{dt_c4}}</td>
+<td><font color="blue">{{dt_c5_b}}</font></td><td><font color="red">{{dt_c5_g}}</font></td><td>{{dt_c5_t}}</td><td><b>{{dt_c5}}</td>
+<td><font color="blue">{{dt_c6_b}}</font></td><td><font color="red">{{dt_c6_g}}</font></td><td>{{dt_c6_t}}</td><td><b>{{dt_c6}}</td>
+<td><font color="blue">{{dt_c7_b}}</font></td><td><font color="red">{{dt_c7_g}}</font></td><td>{{dt_c7_t}}</td><td><b>{{dt_c7}}</td>
+<td><font color="blue">{{dt_c8_b}}</font></td><td><font color="red">{{dt_c8_g}}</font></td><td>{{dt_c8_t}}</td><td><b>{{dt_c8}}</td>
+<td><font color="blue">{{dt_c9_b}}</font></td><td><font color="red">{{dt_c9_g}}</font></td><td>{{dt_c9_t}}</td><td><b>{{dt_c9}}</td>
+<td><font color="blue">{{dt_c10_b}}</font></td><td><font color="red">{{dt_c10_g}}</font></td><td>{{dt_c10_t}}</td><td><b>{{dt_c10}}</td>
+<td><font color="blue">{{dt_c11_b}}</font></td><td><font color="red">{{dt_c11_g}}</font></td><td>{{dt_c11_t}}</td><td><b>{{dt_c11}}</td>
+<td><font color="blue">{{dt_c12_b}}</font></td><td><font color="red">{{dt_c12_g}}</font></td><td>{{dt_c12_t}}</td><td><b>{{dt_c12}}</td>
+<td><font color="blue">{{dt_c_total_b}}</font></td><td><font color="red">{{dt_c_total_g}}</font></td><td>{{dt_c_total_t}}</td><td><b>{{dt_c_total}}<b></td>
+
+</tr>
+{% endfor %}   
+</table>
+
+</div>
+<br>
+<p align="left"><font color="red">*</font> <font color="blue">B - Boys</font>,<font color="red"> G - Girls,</font> T - Transgender</p>
+{% endblock %}

@@ -1,0 +1,430 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+   
+    			document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none"; 
+       
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() { 
+	var a=document.getElementById('lang').value;
+
+      if(a =='TAMIL' )
+            {
+            	document.getElementById('tamil').style.display = "block";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            } 
+            if(a =='ENGLISH')
+            {     
+            	document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "block";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='TELUGU')
+            {
+            	document.getElementById('telugu').style.display = "block";
+               	document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='MALAYALAM')
+            {
+            	document.getElementById('mlym').style.display = "block";
+                document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='KANNADA')
+            {
+            	document.getElementById('kannada').style.display = "block";
+                document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='URUDU')
+            {
+               document.getElementById('urudu').style.display = "block";
+               document.getElementById('tamil').style.display = "none";
+               document.getElementById('eng').style.display = "none";
+               document.getElementById('telugu').style.display = "none";
+               document.getElementById('mlym').style.display = "none";
+               document.getElementById('kannada').style.display = "none";              
+            }     
+  	
+});
+</script>
+
+<input type="hidden" value="{{lang}}" name="lang" id='lang'> 
+
+<div align="right">
+<button class="btn btn-small btn-success" onclick="goBack()">Go Back</button>
+</div>
+
+<form id="form3" action='#' method='post' enctype="multipart/form-data" name="frm" overflow-x:scroll>
+{% csrf_token %}
+
+<input type="hidden" value="{{di_id}}" name="mgmt"> 
+
+<div id="tamil">
+
+<h2><center><font color="red">TAMIL MEDIUM REPORT - BLOCK WISE</center></font></h2>
+ 
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{district}}</center></font></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>Block</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+
+</tr>
+
+{% for xx,yy,blk_c1_tam,blk_c2_tam,blk_c3_tam,blk_c4_tam,blk_c5_tam,blk_c6_tam,blk_c7_tam,blk_c8_tam,blk_c9_tam,blk_c10_tam,blk_c11_tam,blk_c12_tam,blk_total_tam in tamil_list %}<tr>
+<td>{{forloop.counter}}</td>
+
+<td><button name="blks" class="btn btn-defaullt btn-lg"; type="submit" value={{mgmt}},{{xx}},{{lang}}>{{yy}}</button></td>
+	<td> {{blk_c1_tam }} </td>
+	<td> {{blk_c2_tam }} </td>
+	<td> {{blk_c3_tam }} </td>
+	<td> {{blk_c4_tam }} </td>
+	<td> {{blk_c5_tam }} </td>
+	<td> {{blk_c6_tam }} </td>
+	<td> {{blk_c7_tam }} </td>
+	<td> {{blk_c8_tam }} </td>
+	<td> {{blk_c9_tam }} </td>
+	<td> {{blk_c10_tam }} </td>
+	<td> {{blk_c11_tam }} </td>
+	<td> {{blk_c12_tam }} </td>
+	<td> {{blk_total_tam }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+<div id="eng">
+
+<h2><center><font color="red">ENGLISH MEDIUM REPORT - BLOCK WISE</center></font></h2>
+ 
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{district}}</center></font></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>Block</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,blk_c1_eng,blk_c2_eng,blk_c3_eng,blk_c4_eng,blk_c5_eng,blk_c6_eng,blk_c7_eng,blk_c8_eng,blk_c9_eng,blk_c10_eng,blk_c11_eng,blk_c12_eng,blk_total_eng in english_list %}<tr>
+<td>{{forloop.counter}}</td>
+<td><button name="blks" class="btn btn-defaullt btn-lg"; type="submit" value={{mgmt}},{{xx}},{{lang}}>{{yy}}</button></td>
+	<td> {{blk_c1_eng }} </td>
+	<td> {{blk_c2_eng }} </td>
+	<td> {{blk_c3_eng }} </td>
+	<td> {{blk_c4_eng }} </td>
+	<td> {{blk_c5_eng }} </td>
+	<td> {{blk_c6_eng }} </td>
+	<td> {{blk_c7_eng }} </td>
+	<td> {{blk_c8_eng }} </td>
+	<td> {{blk_c9_eng }} </td>
+	<td> {{blk_c10_eng }} </td>
+	<td> {{blk_c11_eng }} </td>
+	<td> {{blk_c12_eng }} </td>
+	<td> {{blk_total_eng }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+<div id="telugu">
+
+<h2><center><font color="red">TELUGU MEDIUM REPORT - BLOCK WISE</center></font></h2>
+
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{district}}</center></font></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>Block</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,blk_c1_telugu,blk_c2_telugu,blk_c3_telugu,blk_c4_telugu,blk_c5_telugu,blk_c6_telugu,blk_c7_telugu,blk_c8_telugu,blk_c9_telugu,blk_c10_telugu,blk_c11_telugu,blk_c12_telugu,blk_total_telugu in telugu_list %}<tr>
+<td>{{forloop.counter}}</td>
+<td><button name="blks" class="btn btn-defaullt btn-lg"; type="submit" value={{mgmt}},{{xx}},{{lang}}>{{yy}}</button></td>
+	<td> {{blk_c1_telugu }} </td>
+	<td> {{blk_c2_telugu }} </td>
+	<td> {{blk_c3_telugu }} </td>
+	<td> {{blk_c4_telugu }} </td>
+	<td> {{blk_c5_telugu }} </td>
+	<td> {{blk_c6_telugu }} </td>
+	<td> {{blk_c7_telugu }} </td>
+	<td> {{blk_c8_telugu }} </td>
+	<td> {{blk_c9_telugu }} </td>
+	<td> {{blk_c10_telugu }} </td>
+	<td> {{blk_c11_telugu }} </td>
+	<td> {{blk_c12_telugu }} </td>
+	<td> {{blk_total_telugu }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+<br>
+
+<div id="mlym">
+
+<h2><center><font color="red">MALAYALAM MEDIUM REPORT - BLOCK WISE</center></font></h2>
+
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{district}}</center></font></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>Block</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,blk_c1_mlym,blk_c2_mlym,blk_c3_mlym,blk_c4_mlym,blk_c5_mlym,blk_c6_mlym,blk_c7_mlym,blk_c8_mlym,blk_c9_mlym,blk_c10_mlym,blk_c11_mlym,blk_c12_mlym,blk_total_mlym in mlym_list %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td><button name="blks" class="btn btn-defaullt btn-lg"; type="submit" value={{mgmt}},{{xx}},{{lang}}>{{yy}}</button></td>
+	<td> {{blk_c1_mlym }} </td>
+	<td> {{blk_c2_mlym }} </td>
+	<td> {{blk_c3_mlym }} </td>
+	<td> {{blk_c4_mlym }} </td>
+	<td> {{blk_c5_mlym }} </td>
+	<td> {{blk_c6_mlym }} </td>
+	<td> {{blk_c7_mlym }} </td>
+	<td> {{blk_c8_mlym }} </td>
+	<td> {{blk_c9_mlym }} </td>
+	<td> {{blk_c10_mlym }} </td>
+	<td> {{blk_c11_mlym }} </td>
+	<td> {{blk_c12_mlym }} </td>
+	<td> {{blk_total_mlym }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+<div id="kannada">
+<h2><center><font color="red">KANNADA MEDIUM REPORT - BLOCK WISE</center></font></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{district}}</center></font></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>Block</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,blk_c1_kanada,blk_c2_kanada,blk_c3_kanada,blk_c4_kanada,blk_c5_kanada,blk_c6_kanada,blk_c7_kanada,blk_c8_kanada,blk_c9_kanada,blk_c10_kanada,blk_c11_kanada,blk_c12_kanada,blk_total_kanada in kannada_list %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td><button name="blks" class="btn btn-defaullt btn-lg"; type="submit" value={{mgmt}},{{xx}},{{lang}}>{{yy}}</button></td>
+	<td> {{blk_c1_kanada }} </td>
+	<td> {{blk_c2_kanada }} </td>
+	<td> {{blk_c3_kanada }} </td>
+	<td> {{blk_c4_kanada }} </td>
+	<td> {{blk_c5_kanada }} </td>
+	<td> {{blk_c6_kanada }} </td>
+	<td> {{blk_c7_kanada }} </td>
+	<td> {{blk_c8_kanada }} </td>
+	<td> {{blk_c9_kanada }} </td>
+	<td> {{blk_c10_kanada }} </td>
+	<td> {{blk_c11_kanada }} </td>
+	<td> {{blk_c12_kanada }} </td>
+	<td> {{blk_total_kanada }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+<div id="urudu">
+<h2><center><font color="red">URUDU MEDIUM REPORT - BLOCK WISE</center></font></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{district}}</center></font></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>Block</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,blk_c1_urudu,blk_c2_urudu,blk_c3_urudu,blk_c4_urudu,blk_c5_urudu,blk_c6_urudu,blk_c7_urudu,blk_c8_urudu,blk_c9_urudu,blk_c10_urudu,blk_c11_urudu,blk_c12_urudu,blk_total_urudu in kannada_list %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td><button name="blks" class="btn btn-defaullt btn-lg"; type="submit" value={{mgmt}},{{xx}},{{lang}}>{{yy}}</button></td>
+	<td> {{blk_c1_urudu }} </td>
+	<td> {{blk_c2_urudu }} </td>
+	<td> {{blk_c3_urudu }} </td>
+	<td> {{blk_c4_urudu }} </td>
+	<td> {{blk_c5_urudu }} </td>
+	<td> {{blk_c6_urudu }} </td>
+	<td> {{blk_c7_urudu }} </td>
+	<td> {{blk_c8_urudu }} </td>
+	<td> {{blk_c9_urudu }} </td>
+	<td> {{blk_c10_urudu }} </td>
+	<td> {{blk_c11_urudu }} </td>
+	<td> {{blk_c12_urudu }} </td>
+	<td> {{blk_total_urudu }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+
+<div id="enroll">
+<h2><center><font color="red">ENROLLMENT REPORT - BLOCK WISE</center></font></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{district}}</center></font></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>Block</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,blk_c1,blk_c2,blk_c3,blk_c4,blk_c5,blk_c6,blk_c7,blk_c8,blk_c9,blk_c10,blk_c11,blk_c12,blk_c_total in enrol_list %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td><button name="blks" class="btn btn-defaullt btn-lg"; type="submit" value={{mgmt}},{{xx}},{{lang}}>{{yy}}</button></td>
+	<td> {{blk_c1 }} </td>
+	<td> {{blk_c2 }} </td>
+	<td> {{blk_c3 }} </td>
+	<td> {{blk_c4 }} </td>
+	<td> {{blk_c5 }} </td>
+	<td> {{blk_c6 }} </td>
+	<td> {{blk_c7 }} </td>
+	<td> {{blk_c8 }} </td>
+	<td> {{blk_c9 }} </td>
+	<td> {{blk_c10 }} </td>
+	<td> {{blk_c11 }} </td>
+	<td> {{blk_c12 }} </td>
+	<td> {{blk_c_total }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+</form>
+{% endblock %}

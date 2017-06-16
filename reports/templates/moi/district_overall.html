@@ -1,0 +1,406 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() { 
+	var a=document.getElementById('doc_read').value;
+	
+	
+      if(a =='TAMIL' )
+            {
+            	document.getElementById('tamil').style.display = "block";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            } 
+            if(a =='ENGLISH')
+            {     
+            	document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "block";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='TELUGU')
+            {
+            	document.getElementById('telugu').style.display = "block";
+               	document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='MALAYALAM')
+            {
+            	document.getElementById('mlym').style.display = "block";
+                document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='KANNADA')
+            {
+            	document.getElementById('kannada').style.display = "block";
+                document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='URUDU')
+            {
+               document.getElementById('urudu').style.display = "block";
+               document.getElementById('tamil').style.display = "none";
+               document.getElementById('eng').style.display = "none";
+               document.getElementById('telugu').style.display = "none";
+               document.getElementById('mlym').style.display = "none";
+               document.getElementById('kannada').style.display = "none";              
+            }     
+  	
+});
+</script>
+
+<div align="right">
+<button class="btn btn-small btn-success" onclick="goBack()">Go Back</button>
+</div>
+
+<input type="hidden" value="{{di_id}}" name="mgmt"> 
+
+<input type="hidden" value="{{doc_ready}}" name="doc_read" id='doc_read'> 
+
+<div id="tamil">
+
+<h2><center><font color="red">TAMIL MEDIUM REPORT - DISTRICT WISE</center></font></h2>
+ 
+<h3><center><font color="green">{{dd}}</font></center></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>District</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+
+</tr>
+
+
+{% for xx,yy,dt_c1_tam,dt_c2_tam,dt_c3_tam,dt_c4_tam,dt_c5_tam,dt_c6_tam,dt_c7_tam,dt_c8_tam,dt_c9_tam,dt_c10_tam,dt_c11_tam,dt_c12_tam,dt_total_tam in tamil_list %}<tr>
+<td>{{forloop.counter}}</td>
+<td><a href="/reports/block_overall_moi_report/{{ xx }}/{{di_id}}/{{doc_ready}}">{{ yy }}</a></td>
+	<td> {{dt_c1_tam }} </td>
+	<td> {{dt_c2_tam }} </td>
+	<td> {{dt_c3_tam }} </td>
+	<td> {{dt_c4_tam }} </td>
+	<td> {{dt_c5_tam }} </td>
+	<td> {{dt_c6_tam }} </td>
+	<td> {{dt_c7_tam }} </td>
+	<td> {{dt_c8_tam }} </td>
+	<td> {{dt_c9_tam }} </td>
+	<td> {{dt_c10_tam }} </td>
+	<td> {{dt_c11_tam }} </td>
+	<td> {{dt_c12_tam }} </td>
+	<td> {{dt_total_tam }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+<div id="eng">
+
+<h2><center><font color="red">ENGLISH MEDIUM REPORT - DISTRICT WISE</center></font></h2>
+ 
+<h3><center><font color="green">{{dd}}</font></center></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>District</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,dt_c1_eng,dt_c2_eng,dt_c3_eng,dt_c4_eng,dt_c5_eng,dt_c6_eng,dt_c7_eng,dt_c8_eng,dt_c9_eng,dt_c10_eng,dt_c11_eng,dt_c12_eng,dt_total_eng in english_list %}<tr>
+<td>{{forloop.counter}}</td>
+<td><a href="/reports/block_overall_moi_report/{{ xx }}/{{di_id}}/{{doc_ready}}">{{ yy }}</a></td>
+	<td> {{dt_c1_eng }} </td>
+	<td> {{dt_c2_eng }} </td>
+	<td> {{dt_c3_eng }} </td>
+	<td> {{dt_c4_eng }} </td>
+	<td> {{dt_c5_eng }} </td>
+	<td> {{dt_c6_eng }} </td>
+	<td> {{dt_c7_eng }} </td>
+	<td> {{dt_c8_eng }} </td>
+	<td> {{dt_c9_eng }} </td>
+	<td> {{dt_c10_eng }} </td>
+	<td> {{dt_c11_eng }} </td>
+	<td> {{dt_c12_eng }} </td>
+	<td> {{dt_total_eng }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+<div id="telugu">
+
+<h2><center><font color="red">TELUGU MEDIUM REPORT - DISTRICT WISE</center></font></h2>
+
+<h3><center><font color="green">{{dd}}</font></center></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>District</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,dt_c1_telugu,dt_c2_telugu,dt_c3_telugu,dt_c4_telugu,dt_c5_telugu,dt_c6_telugu,dt_c7_telugu,dt_c8_telugu,dt_c9_telugu,dt_c10_telugu,dt_c11_telugu,dt_c12_telugu,dt_total_telugu in telugu_list %}<tr>
+<td>{{forloop.counter}}</td>
+<td><a href="/reports/block_overall_moi_report/{{ xx }}/{{di_id}}/{{doc_ready}}">{{ yy }}</a></td>
+	<td> {{dt_c1_telugu }} </td>
+	<td> {{dt_c2_telugu }} </td>
+	<td> {{dt_c3_telugu }} </td>
+	<td> {{dt_c4_telugu }} </td>
+	<td> {{dt_c5_telugu }} </td>
+	<td> {{dt_c6_telugu }} </td>
+	<td> {{dt_c7_telugu }} </td>
+	<td> {{dt_c8_telugu }} </td>
+	<td> {{dt_c9_telugu }} </td>
+	<td> {{dt_c10_telugu }} </td>
+	<td> {{dt_c11_telugu }} </td>
+	<td> {{dt_c12_telugu }} </td>
+	<td> {{dt_total_telugu }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+<br>
+
+<div id="mlym">
+
+<h2><center><font color="red">MALAYALAM MEDIUM REPORT - DISTRICT WISE</center></font></h2>
+
+<h3><center><font color="green">{{dd}}</font></center></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>District</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,dt_c1_mlym,dt_c2_mlym,dt_c3_mlym,dt_c4_mlym,dt_c5_mlym,dt_c6_mlym,dt_c7_mlym,dt_c8_mlym,dt_c9_mlym,dt_c10_mlym,dt_c11_mlym,dt_c12_mlym,dt_total_mlym in mlym_list %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td><a href="/reports/block_overall_moi_report/{{ xx }}/{{di_id}}/{{doc_ready}}">{{ yy }}</a></td>
+	<td> {{dt_c1_mlym }} </td>
+	<td> {{dt_c2_mlym }} </td>
+	<td> {{dt_c3_mlym }} </td>
+	<td> {{dt_c4_mlym }} </td>
+	<td> {{dt_c5_mlym }} </td>
+	<td> {{dt_c6_mlym }} </td>
+	<td> {{dt_c7_mlym }} </td>
+	<td> {{dt_c8_mlym }} </td>
+	<td> {{dt_c9_mlym }} </td>
+	<td> {{dt_c10_mlym }} </td>
+	<td> {{dt_c11_mlym }} </td>
+	<td> {{dt_c12_mlym }} </td>
+	<td> {{dt_total_mlym }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+<div id="kannada">
+<h2><center><font color="red">KANNADA MEDIUM REPORT - DISTRICT WISE</center></font></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>District</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,dt_c1_kanada,dt_c2_kanada,dt_c3_kanada,dt_c4_kanada,dt_c5_kanada,dt_c6_kanada,dt_c7_kanada,dt_c8_kanada,dt_c9_kanada,dt_c10_kanada,dt_c11_kanada,dt_c12_kanada,dt_total_kanada in kannada_list %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td><a href="/reports/block_overall_moi_report/{{ xx }}/{{di_id}}/{{doc_ready}}">{{ yy }}</a></td>
+	<td> {{dt_c1_kanada }} </td>
+	<td> {{dt_c2_kanada }} </td>
+	<td> {{dt_c3_kanada }} </td>
+	<td> {{dt_c4_kanada }} </td>
+	<td> {{dt_c5_kanada }} </td>
+	<td> {{dt_c6_kanada }} </td>
+	<td> {{dt_c7_kanada }} </td>
+	<td> {{dt_c8_kanada }} </td>
+	<td> {{dt_c9_kanada }} </td>
+	<td> {{dt_c10_kanada }} </td>
+	<td> {{dt_c11_kanada }} </td>
+	<td> {{dt_c12_kanada }} </td>
+	<td> {{dt_total_kanada }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+<div id="urudu">
+<h2><center><font color="red">URUDU MEDIUM REPORT - DISTRICT WISE</center></font></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>District</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,dt_c1_urudu,dt_c2_urudu,dt_c3_urudu,dt_c4_urudu,dt_c5_urudu,dt_c6_urudu,dt_c7_urudu,dt_c8_urudu,dt_c9_urudu,dt_c10_urudu,dt_c11_urudu,dt_c12_urudu,dt_total_urudu in kannada_list %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td><a href="/reports/block_overall_moi_report/{{ xx }}/{{di_id}}/{{doc_ready}}">{{ yy }}</a></td>
+	<td> {{dt_c1_urudu }} </td>
+	<td> {{dt_c2_urudu }} </td>
+	<td> {{dt_c3_urudu }} </td>
+	<td> {{dt_c4_urudu }} </td>
+	<td> {{dt_c5_urudu }} </td>
+	<td> {{dt_c6_urudu }} </td>
+	<td> {{dt_c7_urudu }} </td>
+	<td> {{dt_c8_urudu }} </td>
+	<td> {{dt_c9_urudu }} </td>
+	<td> {{dt_c10_urudu }} </td>
+	<td> {{dt_c11_urudu }} </td>
+	<td> {{dt_c12_urudu }} </td>
+	<td> {{dt_total_urudu }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+
+
+<div id="enroll">
+<h2><center><font color="red">ENROLLMENT REPORT - DISTRICT WISE</center></font></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+
+<table border="1" cellpadding="5">
+<tr>
+<th><center>S.No.</center></th>
+<th ><center>District</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+
+{% for xx,yy,dt_c1,dt_c2,dt_c3,dt_c4,dt_c5,dt_c6,dt_c7,dt_c8,dt_c9,dt_c10,dt_c11,dt_c12,dt_c_total in enrol_list %}
+<tr>
+<td>{{forloop.counter}}</td>
+<td><a href="/reports/block_overall_moi_report/{{ xx }}/{{di_id}}/{{doc_ready}}">{{ yy }}</a></td>
+	<td> {{dt_c1 }} </td>
+	<td> {{dt_c2 }} </td>
+	<td> {{dt_c3 }} </td>
+	<td> {{dt_c4 }} </td>
+	<td> {{dt_c5 }} </td>
+	<td> {{dt_c6 }} </td>
+	<td> {{dt_c7 }} </td>
+	<td> {{dt_c8 }} </td>
+	<td> {{dt_c9 }} </td>
+	<td> {{dt_c10 }} </td>
+	<td> {{dt_c11 }} </td>
+	<td> {{dt_c12 }} </td>
+	<td> {{dt_c_total }} </td>
+</tr>
+{% endfor %}   
+</table>
+</div>
+{% endblock %}

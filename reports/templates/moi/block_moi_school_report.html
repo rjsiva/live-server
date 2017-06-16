@@ -1,0 +1,412 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script> 
+<script type="text/javascript">
+
+$(document).ready(function(){
+   
+    			document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none"; 
+       
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() { 
+	var a=document.getElementById('lang').value;
+		
+      if(a =='TAMIL' )
+            {
+            	document.getElementById('tamil').style.display = "block";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            } 
+            if(a =='ENGLISH')
+            {     
+            	document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "block";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='TELUGU')
+            {
+            	document.getElementById('telugu').style.display = "block";
+               	document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='MALAYALAM')
+            {
+            	document.getElementById('mlym').style.display = "block";
+                document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='KANNADA')
+            {
+            	document.getElementById('kannada').style.display = "block";
+                document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='URUDU')
+            {
+               document.getElementById('urudu').style.display = "block";
+               document.getElementById('tamil').style.display = "none";
+               document.getElementById('eng').style.display = "none";
+               document.getElementById('telugu').style.display = "none";
+               document.getElementById('mlym').style.display = "none";
+               document.getElementById('kannada').style.display = "none";              
+            }     
+  	
+});
+</script>
+
+<input type="hidden" value="{{lang}}" name="lang" id='lang'> 
+
+<div align="right">
+<button class="btn btn-small btn-success" onclick="goBack()">Go Back</button>
+</div>
+{{blk_schl}}
+<div id="tamil">
+<h2 ><font color="red"><center>TAMIL MEDIUM REPORT - SCHOOL WISE</font></center></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{block_name.block_name}}</center></font></h3>
+<table border="1" cellpadding="3">
+<tr>
+<th ><center>S.No.</center></th>
+<th ><center>School Name</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+
+</tr>
+
+{% for i in blk_schl %}
+<tr><td width="5%">{{forloop.counter}}</td>
+<td><a href="/reports/school_level_moi/{{i.id}}">{{ i.school.school_code }}</a>----{{ i.school.school_name}}</td>
+
+<td> {{i.c1_tamil }} </td>
+	<td> {{i.c2_tamil }} </td>
+	<td> {{i.c3_tamil }} </td>
+	<td> {{i.c4_tamil }} </td>
+	<td> {{i.c5_tamil }} </td>
+	<td> {{i.c6_tamil }} </td>
+	<td> {{i.c7_tamil }} </td>
+	<td> {{i.c8_tamil }} </td>
+	<td> {{i.c9_tamil }} </td>
+	<td> {{i.c10_tamil }} </td>
+	<td> {{i.c11_tamil }} </td>
+	<td> {{i.c12_tamil }} </td>
+	<td> {{i.total_tamil }} </td>
+</tr>
+{% endfor %}   
+ </table>
+</div>
+
+<div id="eng">
+<h2 ><font color="red"><center>ENGLISH MEDIUM REPORT - SCHOOL WISE</font></center></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{block_name.block_name}}</center></font></h3>
+<table border="1" cellpadding="3">
+<tr>
+<th ><center>S.No.</center></th>
+<th ><center>School Name</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+
+</tr>
+
+{% for j in blk_schl %}
+<tr><td width="5%">{{forloop.counter}}</td>
+<td><a href="/reports/school_level_moi/{{i.id}}">{{ j.school.school_code }}</a>----{{ j.school.school_name}}</td>
+
+	<td> {{j.c1_eng }} </td>
+	<td> {{j.c2_eng }} </td>
+	<td> {{j.c3_eng }} </td>
+	<td> {{j.c4_eng }} </td>
+	<td> {{j.c5_eng }} </td>
+	<td> {{j.c6_eng }} </td>
+	<td> {{j.c7_eng }} </td>
+	<td> {{j.c8_eng }} </td>
+	<td> {{j.c9_eng }} </td>
+	<td> {{j.c10_eng }} </td>
+	<td> {{j.c11_eng }} </td>
+	<td> {{j.c12_eng }} </td>
+	<td> {{j.total_eng }} </td>
+</tr>
+{% endfor %}   
+ </table>
+</div>
+<div id="telugu">
+<h2 ><font color="red"><center>TELUGU MEDIUM REPORT - SCHOOL WISE</font></center></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{block_name.block_name}}</center></font></h3>
+<table border="1" cellpadding="3">
+<tr>
+<th ><center>S.No.</center></th>
+<th ><center>School Name</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+
+</tr>
+
+{% for k in blk_schl %}
+<tr><td width="5%">{{forloop.counter}}</td>
+<td><a href="/reports/school_level_moi/{{k.id}}">{{ k.school.school_code }}</a>----{{ k.school.school_name}}</td>
+
+	<td> {{k.c1_telugu }} </td>
+	<td> {{k.c2_telugu }} </td>
+	<td> {{k.c3_telugu }} </td>
+	<td> {{k.c4_telugu }} </td>
+	<td> {{k.c5_telugu }} </td>
+	<td> {{k.c6_telugu }} </td>
+	<td> {{k.c7_telugu }} </td>
+	<td> {{k.c8_telugu }} </td>
+	<td> {{k.c9_telugu }} </td>
+	<td> {{k.c10_telugu }} </td>
+	<td> {{k.c11_telugu }} </td>
+	<td> {{k.c12_telugu }} </td>
+	<td> {{k.total_telugu }} </td>
+</tr>
+{% endfor %}   
+ </table>
+</div>
+
+<div id="mlym">
+<h2 ><font color="red"><center>MALAYALAM MEDIUM REPORT - SCHOOL WISE</font></center></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{block_name.block_name}}</center></font></h3>
+<table border="1" cellpadding="3">
+<tr>
+<th ><center>S.No.</center></th>
+<th ><center>School Name</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+
+</tr>
+
+{% for i in blk_schl %}
+<tr><td width="5%">{{forloop.counter}}</td>
+<td><a href="/reports/school_level_moi/{{i.id}}">{{ i.school.school_code }}</a>----{{ i.school.school_name}}</td>
+
+	<td> {{i.c1_mlym }} </td>
+	<td> {{i.c2_mlym }} </td>
+	<td> {{i.c3_mlym }} </td>
+	<td> {{i.c4_mlym }} </td>
+	<td> {{i.c5_mlym }} </td>
+	<td> {{i.c6_mlym }} </td>
+	<td> {{i.c7_mlym }} </td>
+	<td> {{i.c8_mlym }} </td>
+	<td> {{i.c9_mlym }} </td>
+	<td> {{i.c10_mlym }} </td>
+	<td> {{i.c11_mlym }} </td>
+	<td> {{i.c12_mlym }} </td>
+	<td> {{i.total_mlym }} </td>
+</tr>
+{% endfor %}   
+ </table>
+</div>
+
+<div id="kannada">
+<h2 ><font color="red"><center>KANNADA MEDIUM REPORT - SCHOOL WISE</font></center></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{block_name.block_name}}</center></font></h3>
+<table border="1" cellpadding="3">
+<tr>
+<th ><center>S.No.</center></th>
+<th ><center>School Name</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+
+</tr>
+
+{% for i in blk_schl %}
+<tr><td width="5%">{{forloop.counter}}</td>
+<td><a href="/reports/school_level_moi/{{i.id}}">{{ i.school.school_code }}</a>----{{ i.school.school_name}}</td>
+
+	<td> {{i.c1_kanada }} </td>
+	<td> {{i.c2_kanada }} </td>
+	<td> {{i.c3_kanada }} </td>
+	<td> {{i.c4_kanada }} </td>
+	<td> {{i.c5_kanada }} </td>
+	<td> {{i.c6_kanada }} </td>
+	<td> {{i.c7_kanada }} </td>
+	<td> {{i.c8_kanada }} </td>
+	<td> {{i.c9_kanada }} </td>
+	<td> {{i.c10_kanada }} </td>
+	<td> {{i.c11_kanada }} </td>
+	<td> {{i.c12_kanada }} </td>
+	<td> {{i.total_kanada }} </td>
+</tr>
+{% endfor %}   
+ </table>
+</div>
+<div id="urudu">
+<h2 ><font color="red"><center>URUDU MEDIUM REPORT - SCHOOL WISE</font></center></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{block_name.block_name}}</center></font></h3>
+<table border="1" cellpadding="3">
+<tr>
+<th ><center>S.No.</center></th>
+<th ><center>School Name</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+
+</tr>
+
+{% for i in blk_schl %}
+<tr><td width="5%">{{forloop.counter}}</td>
+<td><a href="/reports/school_level_moi/{{i.id}}">{{ i.school.school_code }}</a>----{{ i.school.school_name}}</td>
+
+	<td> {{i.c1_urdu }} </td>
+	<td> {{i.c2_urdu }} </td>
+	<td> {{i.c3_urdu }} </td>
+	<td> {{i.c4_urdu }} </td>
+	<td> {{i.c5_urdu }} </td>
+	<td> {{i.c6_urdu }} </td>
+	<td> {{i.c7_urdu }} </td>
+	<td> {{i.c8_urdu }} </td>
+	<td> {{i.c9_urdu }} </td>
+	<td> {{i.c10_urdu }} </td>
+	<td> {{i.c11_urdu }} </td>
+	<td> {{i.c12_urdu }} </td>
+	<td> {{i.total_urdu }} </td>
+</tr>
+{% endfor %}   
+ </table>
+</div>
+
+<div id="enroll">
+<h2 ><font color="red"><center>ENROLLMENT REPORT - SCHOOL WISE</font></center></h2>
+<h3><center><font color="green">{{dd}}</font></center></h3>
+<h3><font color="blue"><center>{{block_name.block_name}}</center></font></h3>
+<table border="1" cellpadding="3">
+<tr>
+<th ><center>S.No.</center></th>
+<th ><center>School Name</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+
+</tr>
+
+{% for kak in blk_enroll %}
+<tr><td width="5%">{{forloop.counter}}</td>
+<td><a href="/reports/school_level_moi/{{kak.id}}">{{ kak.school.school_code }}</a>----{{ kak.school.school_name}}</td>
+
+	<td> {{kak.c1}} </td>
+	<td> {{kak.c2 }} </td>
+	<td> {{kak.c3 }} </td>
+	<td> {{kak.c4 }} </td>
+	<td> {{kak.c5 }} </td>
+	<td> {{kak.c6 }} </td>
+	<td> {{kak.c7 }} </td>
+	<td> {{kak.c8 }} </td>
+	<td> {{kak.c9 }} </td>
+	<td> {{kak.c10 }} </td>
+	<td> {{kak.c11 }} </td>
+	<td> {{kak.c12 }} </td>
+	<td> {{kak.c_total }} </td>
+</tr>
+{% endfor %}   
+ </table>
+</div>
+
+
+{% endblock %}

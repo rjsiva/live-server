@@ -7,11 +7,17 @@ f{% extends 'students/child_detail/base.html' %}
 {% block content %}
 
 
-
 {% if classwise_detail %}
 {% if user.account.user_category.user_category == 'school' %}
-<p ><a href='{% url "students_child_detail_download_profile" pk=class_id %}' style="color:#00A65A;font-size:15;">Download Child Profile</a>
-
+<table>
+<tr><td><a href='{% url "students_child_detail_download_profile" pk=class_id %}' style="color:#00A65A;font-size:18;">Download Classwise List Excel</a></td>
+<td> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a href="/students/classwise_pdfview/{{class_id}}" style="color:#00A65A;font-size:18;"> Download Classwise List PDF </a></td>
+<td> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><a href='{% url "students_child_mandatory" pk=class_id %}' style="color:#C70039;font-size:18;">Download Missing Mandatory Fields<img src="{{STATIC_URL}}img/new.gif"/></a></td></tr>
+</table>
+<br>
+<br>
 {% if class_id == '10' %} &nbsp;&nbsp;&nbsp;&nbsp;<a href='{% url "nominal_roll_list_10"  %}' style="color:#00A65A;font-size:15;">10th Std Nominal roll download xls<img src="{{STATIC_URL}}img/new.gif"/></a>{% endif %}
 {% if class_id == '11' %} &nbsp;&nbsp;&nbsp;&nbsp;<a href='{% url "nominal_roll_list_11" %}' style="color:#00A65A;font-size:15;">11th Std Nominal roll download xls<img src="{{STATIC_URL}}img/new.gif"/></a>{% endif %}
 {% if class_id == '12' %} &nbsp;&nbsp;&nbsp;&nbsp;<a href='{% url "nominal_roll_list_12" %}' style="color:#00A65A;font-size:15;">12th Std Nominal roll download xls<img src="{{STATIC_URL}}img/new.gif"/></a>{% endif %}
@@ -24,7 +30,6 @@ f{% extends 'students/child_detail/base.html' %}
 
 {% endif %}
 <br>
-<a href="/students/classwise_pdfview/{{class_id}}" style="color:#00A65A;font-size:15;"> Download Classwise List PDF </a>
 
 
 <br><table width="100%" class='table table-bordered table-striped3' border="2">
@@ -33,12 +38,19 @@ f{% extends 'students/child_detail/base.html' %}
       <th style="text-align:center;font-size: 15px;">S.No.</th>
       <th style="text-align:center;font-size: 15px;">Name</th>
       <th style="text-align:center;font-size: 15px;">Unique ID No.</th>
-      <th style="text-align:center;font-size: 15px;">Class Studying</th>
+      <th style="text-align:center;font-size: 15px;">Class</th>
       <th style="text-align:center;font-size: 15px;">Father's Name</th>
       <th style="text-align:center;font-size: 15px;">DOB</th>
       <th style="text-align:center;font-size: 15px;">Aadhaar No.</th>
+      <th style="text-align:center;font-size: 15px;">Medium</th>
+      {% if schl_mgmt == 1 or schl_mgmt == 2 or schl_mgmt == 3 or schl_mgmt == 4 or schl_mgmt == 5 or schl_mgmt == 6 or schl_mgmt == 7 %}
+      <th style="text-align:center;font-size: 15px;">Noon Meal</th>
+      {% endif %}
+      {% if schl_mgmt == 1 or schl_mgmt == 2 or schl_mgmt == 3 or schl_mgmt == 4 or schl_mgmt == 5 or schl_mgmt == 6 or schl_mgmt == 7 or schl_mgmt == 8 or schl_mgmt == 9 or schl_mgmt == 12 or schl_mgmt == 13 %}
+      <th style="text-align:center;font-size: 15px;">Bus Pass</th>
+      {% endif %}
       <th style="text-align:center;font-size: 15px;">Photo</th>
-      
+      <th style="text-align:center;font-size: 15px;">Fill Mandatory</th>
     </tr>
   </thead>
   <tbody>
@@ -51,16 +63,43 @@ f{% extends 'students/child_detail/base.html' %}
           <td>{{ detail.father_name |upper}}</td>
           <td>{{ detail.dob | date:"d-m-Y" }}</td>
           <td>{{ detail.aadhaar_uid_number }}</td>
+          <td>{{ detail.education_medium }}</td>
+          {% if schl_mgmt == 1 or schl_mgmt == 2 or schl_mgmt == 3 or schl_mgmt == 4 or schl_mgmt == 5 or schl_mgmt == 6 or schl_mgmt == 7 %}
+            {% if detail.nutritious_meal_flag == "1" %} 
+                <td>Yes</td>
+            
+            {% elif detail.nutritious_meal_flag == "0" %}
+                <td>No</td>
+            
+            {% else %}
+                <td>Not Entered</td>
+            {% endif %}
+          {% endif %}
+          {% if schl_mgmt == 1 or schl_mgmt == 2 or schl_mgmt == 3 or schl_mgmt == 4 or schl_mgmt == 5 or schl_mgmt == 6 or schl_mgmt == 7 or schl_mgmt == 8 or schl_mgmt == 9 or schl_mgmt == 12 or schl_mgmt == 13 %}
 
+          <td>{{ detail.bus_pass }}</td>
+
+          {% endif %}
           <td style="width:230px">
             <div >
-                {% if detail.photo %}
-                <img src="{{MEDIA_URL}}{{detail.photo}}" width="40" height="50">
+                {% if detail.photograph %}
+                <img src="{{MEDIA_URL}}{{detail.photograph}}" width="40" height="50">
                 {%else%}
                 <img src="{{STATIC_URL}}img/student.png" width="40" height="50"/>
                 {%endif%}</div></td>
+          <td>
             
+            {% for j in mandatory_list %}
+            
+                {% if j.unique_id_no == detail.unique_id_no %}
+
+                  <a class="btn  btn-danger" href='{% url "students_child_detail_update" pk=detail.id %}'>Update</a>
+
+                {%endif%}      
+              {% endfor %}
+          </td>
       </tr>
+
 
     {% endfor %}
     <ul class="pagination pagination-centered">

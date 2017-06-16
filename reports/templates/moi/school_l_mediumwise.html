@@ -1,0 +1,148 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<div align="right">
+<button class="btn btn-small btn-success" onclick="goBack()">Go Back</button>
+</div>
+<div style="overflow:auto">
+
+<h2 ><font color="red"><center>MEDIUM WISE REPORT</font></center></h2>
+
+<h3><center><font color='blue'>{{enroll.school.school_name}}</font></center>
+<br>
+<table border="1" cellpadding="5">
+<tr>
+
+<th><center>Standard</center></th>
+<th><center>I</center></th>
+<th><center>II</center></th>
+<th><center>III</center></th>
+<th><center>IV</center></th>
+<th><center>V</center></th>
+<th><center>VI</center></th>
+<th><center>VII</center></th>
+<th><center>VIII</center></th>
+<th><center>IX</center></th>
+<th><center>X</center></th>
+<th><center>XI</center></th>
+<th><center>XII</center></th>
+<th><center>Total</center></th><tr>
+<tr><td>ENROLLED</td>
+	<td>{{enroll.c1}}</td>
+	<td>{{enroll.c2}}</td>
+	<td>{{enroll.c3}}</td>
+	<td>{{enroll.c4}}</td>
+	<td>{{enroll.c5}}</td>
+	<td>{{enroll.c6}}</td>
+	<td>{{enroll.c7}}</td>
+	<td>{{enroll.c8}}</td>
+	<td>{{enroll.c9}}</td>
+	<td>{{enroll.c10}}</td>
+	<td>{{enroll.c11}}</td>
+	<td>{{enroll.c12}}</td>
+	<td>{{enroll.c_total}}</td>
+</tr>
+<tr><td>TAMIL MEDIUM</td>
+	<td>{{medi.c1_tamil}}</td>
+	<td>{{medi.c2_tamil}}</td>
+	<td>{{medi.c3_tamil}}</td>
+	<td>{{medi.c4_tamil}}</td>
+	<td>{{medi.c5_tamil}}</td>
+	<td>{{medi.c6_tamil}}</td>
+	<td>{{medi.c7_tamil}}</td>
+	<td>{{medi.c8_tamil}}</td>
+	<td>{{medi.c9_tamil}}</td>
+	<td>{{medi.c10_tamil}}</td>
+	<td>{{medi.c11_tamil}}</td>
+	<td>{{medi.c12_tamil}}</td>
+	<td>{{medi.total_tamil}}</td>
+	<tr>
+<tr><td>ENGLISH MEDIUM</td>
+	<td>{{medi.c1_eng}}</td>
+	<td>{{medi.c2_eng}}</td>
+	<td>{{medi.c3_eng}}</td>
+	<td>{{medi.c4_eng}}</td>
+	<td>{{medi.c5_eng}}</td>
+	<td>{{medi.c6_eng}}</td>
+	<td>{{medi.c7_eng}}</td>
+	<td>{{medi.c8_eng}}</td>
+	<td>{{medi.c9_eng}}</td>
+	<td>{{medi.c10_eng}}</td>
+	<td>{{medi.c11_eng}}</td>
+	<td>{{medi.c12_eng}}</td>
+	<td>{{medi.total_eng}}</td>
+	<tr>
+<tr><td>TELUGU MEDIUM</td>
+	<td>{{medi.c1_telugu}}</td>
+	<td>{{medi.c2_telugu}}</td>
+	<td>{{medi.c3_telugu}}</td>
+	<td>{{medi.c4_telugu}}</td>
+	<td>{{medi.c5_telugu}}</td>
+	<td>{{medi.c6_telugu}}</td>
+	<td>{{medi.c7_telugu}}</td>
+	<td>{{medi.c8_telugu}}</td>
+	<td>{{medi.c9_telugu}}</td>
+	<td>{{medi.c10_telugu}}</td>
+	<td>{{medi.c11_telugu}}</td>
+	<td>{{medi.c12_telugu}}</td>
+	<td>{{medi.total_telugu}}</td>
+	<tr>
+	<tr><td>MALAYALAM MEDIUM</td>
+	<td>{{medi.c1_mlym}}</td>
+	<td>{{medi.c2_mlym}}</td>
+	<td>{{medi.c3_mlym}}</td>
+	<td>{{medi.c4_mlym}}</td>
+	<td>{{medi.c5_mlym}}</td>
+	<td>{{medi.c6_mlym}}</td>
+	<td>{{medi.c7_mlym}}</td>
+	<td>{{medi.c8_mlym}}</td>
+	<td>{{medi.c9_mlym}}</td>
+	<td>{{medi.c10_mlym}}</td>
+	<td>{{medi.c11_mlym}}</td>
+	<td>{{medi.c12_mlym}}</td>
+	<td>{{medi.total_mlym}}</td>
+	<tr>
+<tr><td>KANNADA MEDIUM</td>
+	<td>{{medi.c1_kanada}}</td>
+	<td>{{medi.c2_kanada}}</td>
+	<td>{{medi.c3_kanada}}</td>
+	<td>{{medi.c4_kanada}}</td>
+	<td>{{medi.c5_kanada}}</td>
+	<td>{{medi.c6_kanada}}</td>
+	<td>{{medi.c7_kanada}}</td>
+	<td>{{medi.c8_kanada}}</td>
+	<td>{{medi.c9_kanada}}</td>
+	<td>{{medi.c10_kanada}}</td>
+	<td>{{medi.c11_kanada}}</td>
+	<td>{{medi.c12_kanada}}</td>
+	<td>{{medi.total_kanada}}</td>
+	<tr>
+	<tr><td>URUDU MEDIUM</td>
+	<td>{{medi.c1_urdu}}</td>
+	<td>{{medi.c2_urdu}}</td>
+	<td>{{medi.c3_urdu}}</td>
+	<td>{{medi.c4_urdu}}</td>
+	<td>{{medi.c5_urdu}}</td>
+	<td>{{medi.c6_urdu}}</td>
+	<td>{{medi.c7_urdu}}</td>
+	<td>{{medi.c8_urdu}}</td>
+	<td>{{medi.c9_urdu}}</td>
+	<td>{{medi.c10_urdu}}</td>
+	<td>{{medi.c11_urdu}}</td>
+	<td>{{medi.c12_urdu}}</td>
+	<td>{{medi.total_urdu}}</td>
+	<tr>
+	
+
+
+
+</table>
+</div>
+{% endblock %}
+

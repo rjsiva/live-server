@@ -1,0 +1,52 @@
+{% extends "baseapp/master_base.html"|pjax:request %}
+{% block content %}
+
+<style type="text/css">
+
+.navigation-div a:visited
+ {
+    color:blue;}
+
+a:link {color:#ff0000;}
+a:visited {color:#0000ff;}
+a:hover {font-size:150%;}
+</style>
+<form id="form3" action='#' method='post' enctype="multipart/form-data" name="frm">
+{% csrf_token %}
+
+<h2><center><font color="red">AADHAAR ENTRY - BLOCK LEVEL REPORT</font></center></h2>
+
+<h2><font color="green">Directorate  of School Education</font></h2>
+
+<div class="navigation-div">
+
+ <ul><button  name="blks" class="btn btn-defaullt btn-lg";  type="submit" value=1,{{ user.account.get_user_info.id }} >1.Government Schools</button></ul>
+
+<ul><button  name="blks" class="btn btn-defaullt btn-lg";  type="submit" value=2,{{ user.account.get_user_info.id }} >2. Private Aided Schools</button></ul>
+
+
+<ul><button  name="blks" class="btn btn-defaullt btn-lg";  type="submit" value=3,{{ user.account.get_user_info.id }} >3. Private UnAided Schools</button></ul></ul>
+</div>
+
+<h2><font color="green">Directorate  of Elementary Education</font></h2>
+<div class="navigation-div">
+ <ul><button  name="blks" class="btn btn-defaullt btn-lg";  type="submit" value=6,{{ user.account.get_user_info.id }} >1.Government Schools</button></ul>
+
+<ul><button  name="blks" class="btn btn-defaullt btn-lg";  type="submit" value=7,{{ user.account.get_user_info.id }} >2. Private Aided Schools</button></ul>
+
+
+<ul><button  name="blks" class="btn btn-defaullt btn-lg";  type="submit" value=8,{{ user.account.get_user_info.id }} >3. Private UnAided Schools</button></ul></ul>
+  </div>
+
+
+<h2><font color="green">Directorate  of Matriculation</font></h2>
+<div class="navigation-div">
+ <ul><button  name="blks" class="btn btn-defaullt btn-lg";  type="submit" value=4,{{ user.account.get_user_info.id }}>Matriculation Schools</button></ul></div>
+
+
+<h2><font color="green">CBSE & ICSE </font></h2>
+<div class="navigation-div">
+ <ul><button  name="blks" class="btn btn-defaullt btn-lg";  type="submit" value=5,{{ user.account.get_user_info.id }}>CBSE & ICSE Schools</button></ul></div>
+ </form>
+
+{% endblock %}

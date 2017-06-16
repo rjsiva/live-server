@@ -28,7 +28,6 @@ from xhtml2pdf import pisa
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.db.models import Count, Sum
-from django.utils import simplejson
 import os
 from django.conf import settings
 import sys
@@ -156,6 +155,7 @@ class Child_detailCreateView(View):
                 email = form.cleaned_data['email'],
                 child_differently_abled = form.cleaned_data['child_differently_abled'],
                 differently_abled = form.cleaned_data['differently_abled'],
+                differently_abled_new=form.cleaned_data['differently_abled_new'],
                 da_id_no = form.cleaned_data['da_id_no'],
                 sci_practical = form.cleaned_data['sci_practical'],
                 lang_exemption = form.cleaned_data['lang_exemption'],
@@ -308,7 +308,7 @@ class Child_detailDeleteView(Child_detailView, DeleteView):
 
 class Child_detailDetailView(View):
     def get (self,request,**kwargs):
-        transfer_enable_classes=[2,3,4,5,6,7,8,9,10,11,12]
+        transfer_enable_classes=[1,2,3,4,5,6,7,8,9,10,11,12]
         pk=self.kwargs.get('pk')
         childdetail = Child_detail.objects.get(id=pk)
         differently_abled_list1=childdetail.differently_abled
@@ -322,7 +322,6 @@ class Child_detailDetailView(View):
         usr = str(request.user.account.user)
         ch = str(childdetail.school.school_code)
         if usr == ch :
-            print 'equal'
             return render(request,'students/child_detail/object_table_detail.html',{'transfer_enable_classes':transfer_enable_classes,'fmdetail':fmdetail,'object':childdetail,'schemes':scheme_lst1,'differently_abled_list':differently_abled_list1,'disadvantaged_group_list':disadvantaged_group_list1,'nutritious_meal_programme':nutritious_meal_programme})
         else:
             msg = "The requested Student does not belong to this school"
@@ -352,8 +351,9 @@ class Child_detailClasswiseView(View):
             schl_id = School.objects.get(id=school_id)
         else :
             schl_id = School.objects.get(school_code=school_code)
-        
-        
+
+        schl_mgmt=schl_id.management_id
+                
         child_detail_main_list = Child_detail.objects.filter(district_id = schl_id.district_id , block_id = schl_id.block_id)
         # if request.user.account.user_category_id == 2:
         #     child_detail_list = Child_detail.objects.filter(staff_id=school_code, block_id=request.user.account.associated_with).exclude(transfer_flag = 1)
@@ -375,7 +375,7 @@ class Child_detailClasswiseView(View):
             child_detail_list = child_detail_main_list.filter(school_id=schl_id.id).exclude(transfer_flag = 1)    
         else:
             child_detail_list = child_detail_main_list.filter(school_id=schl_id.id).exclude(transfer_flag = 1)
-        classwise_detail = child_detail_list.filter(class_studying_id=class_id).order_by('name')
+        classwise_detail = child_detail_list.filter(class_studying_id=class_id).order_by('name','gender')
         classwise_detail_count = classwise_detail.count()
         paginator = Paginator(classwise_detail, 50)
         page = request.GET.get('page')
@@ -387,7 +387,9 @@ class Child_detailClasswiseView(View):
         except EmptyPage:
             # If page is out of range (e.g. 9999), deliver last page of results.
             page_obj = paginator.page(paginator.num_pages)
-        return render(request,'students/child_detail/child_detail_classwise_list.html',{'page_objs':page_obj,'classwise_detail':classwise_detail,'school_code':school_code,'class_id':class_id,'classwise_detail_count':classwise_detail_count})
+        mandatory_list = child_detail_list.values("name","unique_id_no","house_address","street_name","area_village","city_district","pin_code","phone_number","aadhaar_uid_number","gender","dob","religion__religion_name","community__community_name","subcaste__caste_name","mothertounge__language_name","mother_name","father_name","guardian_name","parent_income","class_studying__class_studying","class_section","education_medium__education_medium","school_admission_no","height","weight","nutritious_meal_flag").filter(class_studying_id=class_id).filter(Q(name__isnull=True) |  Q(photograph__isnull=True) |  Q(house_address__isnull=True) |  Q(street_name__isnull=True) |  Q(area_village__isnull=True) |  Q(city_district__isnull=True) |  Q(pin_code__isnull=True) |  Q(phone_number__isnull=True) |  Q(aadhaar_uid_number__isnull=True) |  Q(gender__isnull=True) |  Q(dob__isnull=True) |  Q(religion__religion_name__isnull=True) |  Q(community__community_name__isnull=True) |  Q(subcaste__caste_name__isnull=True) |  Q(mothertounge__language_name__isnull=True) |  Q(mother_name__isnull=True) |  Q(father_name__isnull=True) |  Q(guardian_name__isnull=True) |  Q(parent_income__isnull=True) |  Q(class_studying__class_studying__isnull=True) |  Q(class_section__isnull=True) |  Q(education_medium__education_medium__isnull=True) |  Q(school_admission_no__isnull=True) |  Q(height__isnull=True) |  Q(weight__isnull=True) |  Q(nutritious_meal_flag__isnull=True))
+        # print mandatory_list
+        return render(request,'students/child_detail/child_detail_classwise_list.html',{'page_objs':page_obj,'classwise_detail':classwise_detail,'school_code':school_code,'class_id':class_id,'classwise_detail_count':classwise_detail_count,'schl_mgmt':schl_mgmt,'mandatory_list':mandatory_list})
 
 # class Child_detailClasswiseListView(View):
     
@@ -460,7 +462,6 @@ class Child_detailListView(View):
                 child_detail_list = School_child_count.objects.get(school_id=schl_id)    
             else:
                 child_detail_list = School_child_count.objects.get(school_id=request.user.account.associated_with)
-
             totalcount = child_detail_list.total_count
             I = child_detail_list.one
             II = child_detail_list.two
@@ -494,6 +495,9 @@ class Child_detailListView(View):
                 child_search = Child_detail.objects.filter(Q(unique_id_no__icontains=request.POST['search_id']) | Q(name__icontains=request.POST['search_id']))
             else:
                 child_search = Child_detail.objects.filter(Q(staff_id=request.user,unique_id_no__icontains=request.POST['search_id']) | Q(staff_id=request.user,name__icontains=request.POST['search_id']))
+            
+
+
             return render(request,'students/child_detail/child_detail_classwise_list.html',{'child_search':child_search})
 
 
@@ -554,7 +558,7 @@ class Child_detailUpdateView(View):
         address = instance.house_address
         attndce_status = instance.attendance_status
         scholarship_dtls = instance.scholarship_details
-        diffntly_abled = instance.differently_abled
+        diffntly_abled = instance.differently_abled_new
         dis_advntgd_grp = instance.disadvantaged_group
         differently_abled_list = Differently_abled.objects.all()
         dis_advantaged_list = Disadvantaged_group.objects.all()
@@ -793,6 +797,7 @@ class Child_detailUpdateView(View):
             child_edit.email = form.cleaned_data['email']
             child_edit.child_differently_abled = form.cleaned_data['child_differently_abled']
             child_edit.differently_abled = diff_abled
+            child_edit.differently_abled_new=form.cleaned_data['differently_abled_new']
             child_edit.da_id_no = form.cleaned_data['da_id_no']
             child_edit.sci_practical = form.cleaned_data['sci_practical']
             child_edit.lang_exemption = form.cleaned_data['lang_exemption']
@@ -1034,11 +1039,12 @@ class Child_detailUpdateView(View):
                 #     newchild_fmdetail_edit.save()
             except Child_family_detail.DoesNotExist:
                 pass
-
+            report_child_count_update(child,cls_studying,class_studying,ge,gender)
+            update_gender_based(child,cls_studying,ge,gender)
+            update_class_based(child,cls_studying,class_studying,ge,gender)
             
         else:
-
-            return render (request,'students/child_detail/child_detail_form.html',{'form':form,'pk1':pk,'cls_studying':cls_studying,'academic_yr':academic_yr,'diff_abled':diff_abled})
+            return render (request,'students/child_detail/child_detail_form.html',{'form':form,'pk1':pk,'cls_studying':cls_studying,'academic_yr':academic_yr})
         msg = "Child    " + str(child_edit.unique_id_no) +"    "+form.cleaned_data['name'] +"   "+form.cleaned_data['gender']+"   "+"Date of Birth -"+str(child_edit.dob) +"   "  + "  updated successfully"
 
         messages.success(request, msg )        
@@ -1066,11 +1072,11 @@ class Child_detailTransferView(View):
         pk=self.kwargs.get('pk')
         instance = Child_detail.objects.get(id=pk)
         form = Child_detailform(instance=instance)
-        if instance.class_studying_id == 1:
-            cannot_transfer='You cannot transfer this student record'
-            return render(request,'students/child_detail/child_detail_transfer.html',{'instance':instance,'cannot_transfer':cannot_transfer,'form':form,'pk1':pk})
-        else:
-            return render(request,'students/child_detail/child_detail_transfer.html',{'form':form,'pk1':pk})
+        # if instance.class_studying_id == 1:
+        #     cannot_transfer='You cannot transfer this student record'
+        #     return render(request,'students/child_detail/child_detail_transfer.html',{'instance':instance,'cannot_transfer':cannot_transfer,'form':form,'pk1':pk})
+        # else:
+        return render(request,'students/child_detail/child_detail_transfer.html',{'form':form,'pk1':pk})
 #    def get(self,request,**kwargs):
 #        pk=self.kwargs.get('pk')
 #        instance = Child_detail.objects.get(id=pk)
@@ -1514,26 +1520,191 @@ class Child_detailDownloadProfileView(View):
         school_code = self.kwargs.get('school_code')
         school_id = request.user.account.associated_with
         schl_id = School.objects.get(id=school_id)
-        child_detail_list = Child_detail.objects.values("name","aadhaar_eid_number","aadhaar_uid_number","gender","dob","community__community_name","religion__religion_name","mothertounge__language_name","phone_number","child_differently_abled","differently_abled","child_disadvantaged_group","disadvantaged_group","subcaste__caste_name","nationality__nationality","house_address","native_district","pin_code","blood_group","mother_name","mother_occupation","father_name","father_occupation","parent_income","class_studying__class_studying","group_code__group_name","attendance_status","sport_participation","education_medium__education_medium","district__district_name","block__block_name","unique_id_no","school_id","staff_id","bank_account_no","schemes","academic_year__academic_year","transfer_flag","transfer_date","name_tamil","class_section","student_admitted_section","school_admission_no","bank_ifsc_codenew","sports_player","sports_name","community_certificate","child_status","height","weight","laptop_issued","laptop_slno","guardian_name").filter(staff_id=schl_id.school_code,class_studying_id=pk).exclude(transfer_flag = 1).order_by('name')
-        data = [['S.No','Name of the Student', 'Unique ID No', 'Class Studying', 'Section', 'Academic Year', 'Gender', 'Date of Birth', 'Community', 'Subcaste', 'Religion', 'Fathers Name', 'Mothers Name', 'Guardian Name', 'Address', 'Mother Tongue', 'Phone Number', 'Child Differently Abled', 'If yes', 'Child Disadvantaged Group', 'If yes', 'Aadhaar Eid Number', 'Aadhaar Uid Number'
+        child_detail_list = Child_detail.objects.values("name","aadhaar_uid_number","gender","dob","community__community_name","religion__religion_name","mothertounge__language_name","phone_number","child_differently_abled","differently_abled","child_disadvantaged_group","disadvantaged_group","subcaste__caste_name","nationality__nationality","house_address","native_district","pin_code","blood_group","mother_name","mother_occupation","father_name","father_occupation","parent_income","class_studying__class_studying","group_code__group_code","attendance_status","sport_participation","education_medium__education_medium","district__district_name","block__block_name","unique_id_no","school_id","staff_id","bank_account_no","schemes","transfer_flag","transfer_date","name_tamil","class_section","student_admitted_section","school_admission_no","bank_ifsc_codenew","sports_player","sports_name","community_certificate","child_status","height","weight","guardian_name","nutritious_meal_flag").filter(staff_id=schl_id.school_code,class_studying_id=pk).exclude(transfer_flag = 1).order_by('name')
+        data = [['S.No','Name of the Student', 'Unique ID No', 'Class Studying', 'Section', 'Gender', 'Date of Birth', 'Community', 'Subcaste', 'Religion', 'Fathers Name', 'Mothers Name', 'Guardian Name', 'Address', 'Mother Tongue', 'Phone Number', 'Child Differently Abled', 'If yes', 'Child Disadvantaged Group', 'If yes', 'Aadhaar Uid Number'
                 , 'Nationality', 'Native District', 'Pincode', 'Blood Group', 'Mothers Occupation', 'Fathers Occupation', 'Parent Income', 'Attendance Status', 'Sport Participation', 'Education Medium', 'Bank Account No', 'Bank Ifsc Code', 'If Yes', 'Student Admitted Section', 'School Admission No', 'Sports Player', 'Sports Name', 'Community Certificate'
-                , 'Child Status', 'Height (cm)', 'Weight (kg)', 'Laptop Issued', 'Laptop Slno']]
+                , 'Child Status', 'Height (cm)', 'Weight (kg)','Noon Meal']]
         row_no = 0
         for i in child_detail_list:
             row_no += 1
-            data.append([row_no,i['name'], str(i['unique_id_no']), i['class_studying__class_studying'], i['class_section'], i['academic_year__academic_year'], i['gender'], i['dob'], i['community__community_name'], i['subcaste__caste_name'], i['religion__religion_name'], i['father_name'], i['mother_name'], i['guardian_name'], i['house_address'], i['mothertounge__language_name'], i['phone_number'], i['child_differently_abled'], i['differently_abled'], i['child_disadvantaged_group'], i['disadvantaged_group'], i['aadhaar_eid_number'], i['aadhaar_uid_number']
+            
+            if i["nutritious_meal_flag"] == str(1) :
+                i["nutritious_meal_flag"] = 'Yes'
+            elif i["nutritious_meal_flag"] == str(0) :
+                i["nutritious_meal_flag"] = 'No'
+            else :
+                i["nutritious_meal_flag"] ="Not Entered"
+            
+            data.append([row_no,i['name'], str(i['unique_id_no']), i['class_studying__class_studying'], i['class_section'], i['gender'], i['dob'], i['community__community_name'], i['subcaste__caste_name'], i['religion__religion_name'], i['father_name'], i['mother_name'], i['guardian_name'], i['house_address'], i['mothertounge__language_name'], i['phone_number'], i['child_differently_abled'], i['differently_abled'], i['child_disadvantaged_group'], i['disadvantaged_group'], i['aadhaar_uid_number']
                 , i['nationality__nationality'], i['native_district'], i['pin_code'], i['blood_group'], i['mother_occupation'], i['father_occupation'], i['parent_income'], i['attendance_status'], i['sport_participation'], i['education_medium__education_medium'], i['bank_account_no'], i['bank_ifsc_codenew'], i['schemes']
-                , i['student_admitted_section'], i['school_admission_no'], i['sports_player'], i['sports_name'], i['community_certificate'], i['child_status'], i['height'], i['weight'], i['laptop_issued'], i['laptop_slno']])
+                , i['student_admitted_section'], i['school_admission_no'], i['sports_player'], i['sports_name'], i['community_certificate'], i['child_status'], i['height'], i['weight'],i['nutritious_meal_flag']])
+            
         return ExcelResponse(data, 'Child_Profile')
+
+
+class Download_School_Profile(View):
+    def get(self,request,**kwargs):
+        school_code = self.kwargs.get('school_code')
+        school_id = request.user.account.associated_with
+        schl_id = School.objects.get(id=school_id)
+        student_list=Child_detail.objects.filter(staff_id=schl_id.school_code).exclude(transfer_flag = 1).order_by('class_studying','name')
+        child_detail_list = student_list.values("name","aadhaar_uid_number","gender","dob","community__community_name","religion__religion_name","mothertounge__language_name","phone_number","child_differently_abled","differently_abled","child_disadvantaged_group","disadvantaged_group","subcaste__caste_name","nationality__nationality","house_address","native_district","pin_code","blood_group","mother_name","mother_occupation","father_name","father_occupation","parent_income","class_studying__class_studying","group_code__group_code","attendance_status","sport_participation","education_medium__education_medium","district__district_name","block__block_name","unique_id_no","school_id","staff_id","bank_account_no","schemes","transfer_flag","transfer_date","name_tamil","class_section","student_admitted_section","school_admission_no","bank_ifsc_codenew","sports_player","sports_name","community_certificate","child_status","height","weight","guardian_name")
+        data = [['S.No','Name of the Student', 'Unique ID No', 'Class Studying', 'Section', 'Gender', 'Date of Birth', 'Community', 'Subcaste', 'Religion', 'Fathers Name', 'Mothers Name', 'Guardian Name', 'Address', 'Mother Tongue', 'Phone Number', 'Child Differently Abled', 'If yes', 'Child Disadvantaged Group', 'If yes', 'Aadhaar Uid Number'
+                , 'Nationality', 'Native District', 'Pincode', 'Blood Group', 'Mothers Occupation', 'Fathers Occupation', 'Parent Income', 'Attendance Status', 'Sport Participation', 'Education Medium', 'Bank Account No', 'Bank Ifsc Code', 'If Yes', 'Student Admitted Section', 'School Admission No', 'Sports Player', 'Sports Name', 'Community Certificate'
+                , 'Child Status', 'Height (cm)', 'Weight (kg)','Noon Meal']]
+        row_no = 0
+        for i in child_detail_list:
+            row_no += 1
+            if i["nutritious_meal_flag"] == str(1) :
+                i["nutritious_meal_flag"] = 'Yes'
+            elif i["nutritious_meal_flag"] == str(0) :
+                i["nutritious_meal_flag"] = 'No'
+            else :
+                i["nutritious_meal_flag"] ="Not Entered"
+            data.append([row_no,i['name'], str(i['unique_id_no']), i['class_studying__class_studying'], i['class_section'], i['gender'], i['dob'], i['community__community_name'], i['subcaste__caste_name'], i['religion__religion_name'], i['father_name'], i['mother_name'], i['guardian_name'], i['house_address'], i['mothertounge__language_name'], i['phone_number'], i['child_differently_abled'], i['differently_abled'], i['child_disadvantaged_group'], i['disadvantaged_group'], i['aadhaar_uid_number']
+                , i['nationality__nationality'], i['native_district'], i['pin_code'], i['blood_group'], i['mother_occupation'], i['father_occupation'], i['parent_income'], i['attendance_status'], i['sport_participation'], i['education_medium__education_medium'], i['bank_account_no'], i['bank_ifsc_codenew'], i['schemes']
+                , i['student_admitted_section'], i['school_admission_no'], i['sports_player'], i['sports_name'], i['community_certificate'], i['child_status'], i['height'], i['weight'],i['nutritious_meal_flag']])
+        return ExcelResponse(data, 'School_Profile')
+
+class child_mandatory(View):
+    def get(self,request,**kwargs):
+        pk=self.kwargs.get('pk')
+        school_code = self.kwargs.get('school_code')
+        school_id = request.user.account.associated_with
+        schl_id = School.objects.get(id=school_id)
+        child_detail_list = Child_detail.objects.exclude(transfer_flag = 1).values("name","house_address","street_name","area_village","city_district","pin_code","phone_number","aadhaar_uid_number","gender","dob","religion__religion_name","community__community_name","subcaste__caste_name","mothertounge__language_name","mother_name","father_name","guardian_name","parent_income","class_studying__class_studying","class_section","education_medium__education_medium","school_admission_no","height","weight","nutritious_meal_flag","group_code__group_code").filter(staff_id=schl_id.school_code,class_studying_id=pk).filter(Q(name__isnull=True) |  Q(photograph__isnull=True) |  Q(house_address__isnull=True) |  Q(street_name__isnull=True) |  Q(area_village__isnull=True) |  Q(city_district__isnull=True) |  Q(pin_code__isnull=True) |  Q(phone_number__isnull=True) |  Q(aadhaar_uid_number__isnull=True) |  Q(gender__isnull=True) |  Q(dob__isnull=True) |  Q(religion__religion_name__isnull=True) |  Q(community__community_name__isnull=True) |  Q(subcaste__caste_name__isnull=True) |  Q(mothertounge__language_name__isnull=True) | Q(mother_name__isnull=True) |  Q(father_name__isnull=True) |  Q(guardian_name__isnull=True) |  Q(parent_income__isnull=True) |  Q(class_studying__class_studying__isnull=True) |  Q(class_section__isnull=True) |  Q(education_medium__education_medium__isnull=True) |  Q(school_admission_no__isnull=True) |  Q(height__isnull=True) |  Q(weight__isnull=True) |  Q(nutritious_meal_flag__isnull=True) |  Q(group_code__group_code__isnull=True)).order_by('name')
+        data=[['S.No.','Name','Gender','DOB','Class','Section','Medium','Admission No.','Height','Weight','Address','Street Name','Area/Village','City/District','Pincode','Mobile Number','Aadhaar Number','Religion','Community','Subcaste','Mother Tongue','Fathers Name','Mother Name','Guardian Name','Parental Annual Income','Nutritious Meal','Group Code']]
+        row_no = 0
+
+        
+        for i in child_detail_list:
+            row_no += 1
+            if i['name'] == None or i['name'] == ' ':
+                i['name'] = 'Update'
+            else:
+                i['name'] = i['name']
+            if i['gender'] == None or i['gender'] == ' ':
+                i['gender'] = 'Update'
+            else:
+                i['gender'] = ''
+            if i['dob'] == None or i['dob'] == ' ':
+                i['dob'] = 'Update'
+            else:
+                i['dob'] = ''
+
+            if i['class_studying__class_studying'] == 'XI' or i['class_studying__class_studying'] == 'XII':
+                if i['group_code__group_code'] == None or i['group_code__group_code'] == '' or int(i['group_code__group_code']) == int(0):
+                    i['group_code__group_code'] ='Update'
+                else:
+                    i['group_code__group_code'] = ' '
+            else:
+                i['group_code__group_code'] = ' '
+
+
+            if i['class_studying__class_studying'] == None or i['class_studying__class_studying'] == ' ':
+                i['class_studying__class_studying'] = 'Update'
+            else:
+                i['class_studying__class_studying'] = ''
+            if i['class_section'] == None or i['class_section'] == ' ':
+                i['class_section'] = 'Update'
+            else:
+                i['class_section'] = ''
+            
+            
+            if i['education_medium__education_medium'] == None or i['education_medium__education_medium'] == ' ':
+                i['education_medium__education_medium'] = 'Update'
+            else:
+                i['education_medium__education_medium'] = ''
+            if i['school_admission_no'] == None or i['school_admission_no'] == ' ':
+                i['school_admission_no'] = 'Update'
+            else:
+                i['school_admission_no'] = ''
+            if i['height'] == None or i['height'] == ' ':
+                i['height'] = 'Update'
+            else:
+                i['height'] = ''
+            if i['weight'] == None or i['weight'] == ' ':
+                i['weight'] = 'Update'
+            else:
+                i['weight'] = ''
+            if i['house_address'] == None or i['house_address'] == ' ':
+                i['house_address'] = 'Update'
+            else:
+                i['house_address'] = ''
+            if i['street_name'] == None or i['street_name'] == ' ':
+                i['street_name'] = 'Update'
+            else:
+                i['street_name'] = ''
+            if i['area_village'] == None or i['area_village'] == ' ':
+                i['area_village'] = 'Update'
+            else:
+                i['area_village'] = ''
+            if i['city_district'] == None or i['city_district'] == ' ':
+                i['city_district'] = 'Update'
+            else:
+                i['city_district'] = ''
+            if i['pin_code'] == None or i['pin_code'] == ' ':
+                i['pin_code'] = 'Update'
+            else:
+                i['pin_code'] = ''
+            if i['phone_number'] == None or i['phone_number'] == ' ':
+                i['phone_number'] = 'Update'
+            else:
+                i['phone_number'] = ''
+            if i['aadhaar_uid_number'] == None or i['aadhaar_uid_number'] == ' ':
+                i['aadhaar_uid_number'] = 'Update'
+            else:
+                i['aadhaar_uid_number'] = ''
+            if i['religion__religion_name'] == None or i['religion__religion_name'] == ' ':
+                i['religion__religion_name'] = 'Update'
+            else:
+                i['religion__religion_name'] = ''
+
+            if i['community__community_name'] == None or i['community__community_name'] == ' ':
+                i['community__community_name'] = 'Update'
+            else:
+                i['community__community_name'] = ''
+            if i['subcaste__caste_name'] == None or i['subcaste__caste_name'] == ' ':
+                i['subcaste__caste_name'] = 'Update'
+            else:
+                i['subcaste__caste_name'] = ''
+            if i['mothertounge__language_name'] == None or i['mothertounge__language_name'] == ' ':
+                i['mothertounge__language_name'] = 'Update'
+            else:
+                i['mothertounge__language_name'] = ''
+
+            if (i['mother_name'] == None or i['mother_name'] == ' ') and (i['father_name'] == None or i['father_name'] == ' ') and ( i['guardian_name'] == None or i['guardian_name'] == ' '):
+            
+                i['mother_name'] = 'Update'
+            
+                i['father_name'] = 'Update'
+            
+                i['guardian_name'] = 'Update'
+            else:
+                i['mother_name'] = ''
+            
+                i['father_name'] = ''
+            
+                i['guardian_name'] = ''
+            
+            if i['parent_income'] == None or i['parent_income'] == ' ':
+                i['parent_income'] = 'Update'
+            else:
+                i['parent_income'] = ''
+            if i['nutritious_meal_flag'] == None or i['nutritious_meal_flag'] == ' ':
+                i['nutritious_meal_flag'] = 'Update'
+            else:
+                i['nutritious_meal_flag'] = ''
+
+            data.append([row_no,i['name'], i['gender'], i['dob'],i['class_studying__class_studying'],i['class_section'],i['education_medium__education_medium'], i['school_admission_no'],i['height'], i['weight'],i['house_address'],i['street_name'],i['area_village'],i['city_district'],i['pin_code'],i['phone_number'],i['aadhaar_uid_number'], i['religion__religion_name'],i['community__community_name'], i['subcaste__caste_name'], i['mothertounge__language_name'],i['father_name'], i['mother_name'], i['guardian_name'], i['parent_income'],i['nutritious_meal_flag'],i['group_code__group_code']])
+        
+        return ExcelResponse(data, 'Mandatory_list')
 
 
 class Child_detailSectionListView(View):
     @method_decorator(login_required)
     def get(self,request,**kwargs):
         try:
-            
-            
-
             school_code = self.request.GET.get('school_code')
             
             if request.user.account.user_category_id == 1:

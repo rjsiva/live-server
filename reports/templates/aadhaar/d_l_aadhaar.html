@@ -1,0 +1,33 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<div align="right">
+<button class="btn btn-small btn-success" onclick="goBack()">Go Back</button>
+</div>
+<div style="overflow:auto">
+
+<h3><center><font color="green">{{d}}</font></center></h3>
+
+<input type="hidden" value="{{di_id}}" name="mgmt"> 
+
+<h2><center><font color="red">Districtwise Aadhaar Report</center></font></h2>
+<br>
+<table border="1" cellpadding="10">
+<tr><th>S.No.</th><th>District</th><th>Students Enrolled</th>
+<th>Aadhaar Entered</th><tr>
+{% for a,b,c,d in a_list %}
+<tr><td>{{forloop.counter}}</td><td><a href="/reports/block_overall_aadhaar_report/{{ a }}/{{di_id}}">{{ b }}</a></td><td>{{c}}</td><td>{{d}}</td>
+</tr>
+{% endfor %}   
+ </table>
+</div>
+ 
+
+{% endblock %}

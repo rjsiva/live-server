@@ -1,5 +1,44 @@
 {% extends "baseapp/master_base.html"|pjax:request %}
 
-{% load i18n %}
+dfkljfldskfl;sd
+
+{% block content %}
+
+dfkljfldskfl;sd
+{% if request.user.account.user_category.user_category == 'state' %}
+dfkljfldskfl;sd
+<a href="/reports/state_level_aadhaar_report"><img src="{{STATIC_URL}}img/UIDAI.jpg"/></a>
+
+{% endif %}
+
+{% if request.user.account.user_category.user_category == 'district' %}
+
+<a href="/reports/district_level_aadhaar_report"><img src="{{STATIC_URL}}img/UIDAI.jpg"/></a>
+
+{% endif %}
+
+{% if request.user.account.user_category.user_category == 'block' %}
+
+<a href="/reports/block_level_aadhaar_report"><img src="{{STATIC_URL}}img/UIDAI.jpg"/></a>
+{% endif %}
+
+{% if request.user.account.user_category.user_category == 'state' %}
+
+<a href="/reports/state_level_genderwise_report"><img src="{{STATIC_URL}}img/gender_icon.jpg"/></a>
+
+{% endif %}
+
+{% if request.user.account.user_category.user_category == 'district' %}
+
+<a href="/reports/district_level_genderwise_report/{{ user.account.get_user_info.id }} "><img src="{{STATIC_URL}}img/gender_icon.jpg"/></a>
+
+{% endif %}
+
+{% if request.user.account.user_category.user_category == 'block' %}
+
+<a href="/reports/block_level_genderwise_report/{{ user.account.get_user_info.id }} "><img src="{{STATIC_URL}}img/gender_icon.jpg"/></a>
+
+{% endif %}
 
 
+{% endblock %}

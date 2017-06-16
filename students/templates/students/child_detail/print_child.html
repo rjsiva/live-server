@@ -32,7 +32,7 @@
           <tr>
             <tr> <td style="width:230px">
             <div style="margin-left:100px;margin-top:30px;margin-bottom:30px">
-                {% if student.photo %}
+                {% if student.photograph %}
                 <img src="{{MEDIA_URL}}/{{student.photograph}}" width="150" height="150" />
                 {%else%}
                 <img src="{{STATIC_URL}}img/student.png" width="150" height="150"/>
@@ -147,7 +147,7 @@
 
         <td valign="TOP">
         <table style="margin-left:10px">
-            <tr> <td style="border:0px;padding-top:3px;" > Nutritious Meal Programme </td><td style="border:0px;" > : </td> <td style="border:0px;padding-top:3px;" >{% if student.nutritious_meal_programme %} {{ nutritious_meal_programme }} {% else %} &nbsp;&nbsp;&nbsp;- {% endif %}   </td> </tr>
+            <tr> <td style="border:0px;padding-top:3px;" > Nutritious Meal Programme </td><td style="border:0px;" > : </td> <td style="border:0px;padding-top:3px;" >{% if student.nutritious_meal_programme %} {{ nutritious_meal_programme }} {% else %} &nbsp;&nbsp;&nbsp;No {% endif %}   </td> </tr>
             {% if student.bank %}
             <tr> <td style="border:0px;" > Bank </td><td style="border:0px;" > : </td> <td style="border:0px;padding-top:3px;" >{% if student.bank %} {{ student.bank }} {% else %} &nbsp;&nbsp;&nbsp;- {% endif %}   </td> </tr>
             <tr> <td style="border:0px;padding-top:3px;" > Bank Account No </td><td style="border:0px;padding-top:3px;" > : </td> <td style="border:0px;padding-top:3px;" >{% if student.bank_account_no %} {{ student.bank_account_no }} {% else %} &nbsp;&nbsp;&nbsp;- {% endif %}   </td> </tr>

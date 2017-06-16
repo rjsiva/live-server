@@ -1,0 +1,32 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+<div align="right">
+<button class="btn btn-small btn-success" onclick="goBack()">Go Back</button>
+</div>
+<div style="overflow:auto">
+
+<form id="form3" action='#' method='post' enctype="multipart/form-data" name="frm">
+{% csrf_token %}
+<h3><center><font color="green">{{d}}</font></center></h3>
+<h2><center><font color="red">Blockwise Aadhaar Report</font></center></h2>
+<h3><font color="blue"><center>{{district}}</center></font></h3>
+<table border="1" cellpadding="10">
+<tr><th>S.No.</th><th>Block</th><th>Students Enrolled</th>
+<th>Aadhaar Entered</th><tr>
+{% for a,b,c,d in a_list %}
+<tr><td>{{forloop.counter}}</td>
+	<td><button  name="blks" class="btn btn-defaullt btn-lg";  type="submit" value={{mgmt}},{{a}} >{{ b }}</button>
+	</td>
+<td>{{c}}</td><td>{{d}}</td></tr>
+{% endfor %}   
+</table>
+</form>
+</div> 
+{% endblock %}

@@ -1,0 +1,812 @@
+{% extends 'block/base.html' %}
+{% load i18n %}
+{% block content %}
+<script type="text/javascript">
+
+$(document).ready(function(){
+   
+    			document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none"; 
+       
+}); 
+</script>
+<script type="text/javascript">
+    function showHide_medium(a) 
+        {
+        	var result=document.getElementById('medium').value;
+        	
+            if(a =='TAMIL' )
+            {
+            	document.getElementById('tamil').style.display = "block";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            } 
+            if(a =='ENGLISH')
+            {     
+            	document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "block";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='TELUGU')
+            {
+            	document.getElementById('telugu').style.display = "block";
+               	document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='MALAYALAM')
+            {
+            	document.getElementById('mlym').style.display = "block";
+                document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('kannada').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='KANNADA')
+            {
+            	document.getElementById('kannada').style.display = "block";
+                document.getElementById('tamil').style.display = "none";
+                document.getElementById('eng').style.display = "none";
+                document.getElementById('telugu').style.display = "none";
+                document.getElementById('mlym').style.display = "none";
+                document.getElementById('urudu').style.display = "none";
+            }
+            if(a =='URUDU')
+            {
+               document.getElementById('urudu').style.display = "block";
+               document.getElementById('tamil').style.display = "none";
+               document.getElementById('eng').style.display = "none";
+               document.getElementById('telugu').style.display = "none";
+               document.getElementById('mlym').style.display = "none";
+               document.getElementById('kannada').style.display = "none";              
+            }
+        }
+   
+</script> 
+
+<form id="form3" action='#' method='post' enctype="multipart/form-data" name="frm">
+{% csrf_token %}
+ENTER THE MEDIUM : <select name="medium" id="medium" onChange="showHide_medium(this.value);">
+        <option value="" >---------</option>
+        <option value="TAMIL">TAMIL</option>
+        <option value="ENGLISH">ENGLISH</option>
+        <option value="TELUGU">TELUGU</option>
+        <option value="MALAYALAM">MALAYALAM</option>
+        <option value="KANNADA">KANNADA</option>
+        <option value="URUDU">URUDU</option>
+</select>
+<div id="tamil">
+<h2><center><font color="red">TAMIL MEDIUM REPORT - STATE LEVEL </font></center></h2>
+
+<h2><center><font color="green">Directorate  of School Education</font></center></h2>
+
+<table border="2" cellpadding="5">
+<tr>
+<th ><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="1,TAMIL">Government</button></td>
+	<td> {{ds_g_c1_tam }} </td>
+	<td> {{ds_g_c2_tam }} </td>
+	<td> {{ds_g_c3_tam }} </td>
+	<td> {{ds_g_c4_tam }} </td>
+	<td> {{ds_g_c5_tam }} </td>
+	<td> {{ds_g_c6_tam }} </td>
+	<td> {{ds_g_c7_tam }} </td>
+	<td> {{ds_g_c8_tam }} </td>
+	<td> {{ds_g_c9_tam }} </td>
+	<td> {{ds_g_c10_tam }} </td>
+	<td> {{ds_g_c11_tam }} </td>
+	<td> {{ds_g_c12_tam }} </td>
+	<td> {{ds_g_total_tam }} </td>
+</tr>
+
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="2,TAMIL">Pvt Aided</button></td>
+	<td> {{ds_pa_c1_tam }} </td>
+	<td> {{ds_pa_c2_tam }} </td>
+	<td> {{ds_pa_c3_tam }} </td>
+	<td> {{ds_pa_c4_tam }} </td>
+	<td> {{ds_pa_c5_tam }} </td>
+	<td> {{ds_pa_c6_tam }} </td>
+	<td> {{ds_pa_c7_tam }} </td>
+	<td> {{ds_pa_c8_tam }} </td>
+	<td> {{ds_pa_c9_tam }} </td>
+	<td> {{ds_pa_c10_tam }} </td>
+	<td> {{ds_pa_c11_tam }} </td>
+	<td> {{ds_pa_c12_tam }} </td>
+	<td> {{ds_pa_total_tam }} </td>
+</tr>
+</table>
+<h2><center><font color="green">Directorate  of Elementary Education</font></center></h2>
+<table border="2" cellpadding="5">
+<tr>
+<th><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="6,TAMIL">Government</button></td>
+	<td> {{dee_g_c1_tam }} </td>
+	<td> {{dee_g_c2_tam }} </td>
+	<td> {{dee_g_c3_tam }} </td>
+	<td> {{dee_g_c4_tam }} </td>
+	<td> {{dee_g_c5_tam }} </td>
+	<td> {{dee_g_c6_tam }} </td>
+	<td> {{dee_g_c7_tam }} </td>
+	<td> {{dee_g_c8_tam }} </td>
+	<td> {{dee_g_c9_tam }} </td>
+	<td> {{dee_g_c10_tam }} </td>
+	<td> {{dee_g_c11_tam }} </td>
+	<td> {{dee_g_c12_tam }} </td>
+	<td> {{dee_g_total_tam }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="7,TAMIL">Pvt Aided</button></td>
+	<td> {{dee_pa_c1_tam }} </td>
+	<td> {{dee_pa_c2_tam }} </td>
+	<td> {{dee_pa_c3_tam }} </td>
+	<td> {{dee_pa_c4_tam }} </td>
+	<td> {{dee_pa_c5_tam }} </td>
+	<td> {{dee_pa_c6_tam }} </td>
+	<td> {{dee_pa_c7_tam }} </td>
+	<td> {{dee_pa_c8_tam }} </td>
+	<td> {{dee_pa_c9_tam }} </td>
+	<td> {{dee_pa_c10_tam }} </td>
+	<td> {{dee_pa_c11_tam }} </td>
+	<td> {{dee_pa_c12_tam }} </td>
+	<td> {{dee_pa_total_tam }} </td>
+</tr>
+</table>
+
+</div>
+<div id="eng">
+<h2><center><font color="red">ENGLISH MEDIUM REPORT - STATE LEVEL </font></center></h2>
+ 
+<h2><center><font color="green">Directorate  of School Education</font></center></h2>
+
+<table border="2" cellpadding="5">
+<tr>
+<th ><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="1,ENGLISH">Government</button></td>
+	<td> {{ds_g_c1_eng }} </td>
+	<td> {{ds_g_c2_eng }} </td>
+	<td> {{ds_g_c3_eng }} </td>
+	<td> {{ds_g_c4_eng }} </td>
+	<td> {{ds_g_c5_eng }} </td>
+	<td> {{ds_g_c6_eng }} </td>
+	<td> {{ds_g_c7_eng }} </td>
+	<td> {{ds_g_c8_eng }} </td>
+	<td> {{ds_g_c9_eng }} </td>
+	<td> {{ds_g_c10_eng }} </td>
+	<td> {{ds_g_c11_eng }} </td>
+	<td> {{ds_g_c12_eng }} </td>
+	<td> {{ds_g_total_eng }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="2,ENGLISH">Pvt Aided</button></td>
+	<td> {{ds_pa_c1_eng }} </td>
+	<td> {{ds_pa_c2_eng }} </td>
+	<td> {{ds_pa_c3_eng }} </td>
+	<td> {{ds_pa_c4_eng }} </td>
+	<td> {{ds_pa_c5_eng }} </td>
+	<td> {{ds_pa_c6_eng }} </td>
+	<td> {{ds_pa_c7_eng }} </td>
+	<td> {{ds_pa_c8_eng }} </td>
+	<td> {{ds_pa_c9_eng }} </td>
+	<td> {{ds_pa_c10_eng }} </td>
+	<td> {{ds_pa_c11_eng }} </td>
+	<td> {{ds_pa_c12_eng }} </td>
+	<td> {{ds_pa_total_eng }} </td>
+</tr>
+</table>
+<h2><center><font color="green">Directorate  of Elementary Education</font></center></h2>
+<table border="2" cellpadding="5">
+<tr>
+<th><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="6,ENGLISH">Government</button></td>
+	<td> {{dee_g_c1_eng }} </td>
+	<td> {{dee_g_c2_eng }} </td>
+	<td> {{dee_g_c3_eng }} </td>
+	<td> {{dee_g_c4_eng }} </td>
+	<td> {{dee_g_c5_eng }} </td>
+	<td> {{dee_g_c6_eng }} </td>
+	<td> {{dee_g_c7_eng }} </td>
+	<td> {{dee_g_c8_eng }} </td>
+	<td> {{dee_g_c9_eng }} </td>
+	<td> {{dee_g_c10_eng }} </td>
+	<td> {{dee_g_c11_eng }} </td>
+	<td> {{dee_g_c12_eng }} </td>
+	<td> {{dee_g_total_eng }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="7,ENGLISH">Pvt Aided</button></td>
+	<td> {{dee_pa_c1_eng }} </td>
+	<td> {{dee_pa_c2_eng }} </td>
+	<td> {{dee_pa_c3_eng }} </td>
+	<td> {{dee_pa_c4_eng }} </td>
+	<td> {{dee_pa_c5_eng }} </td>
+	<td> {{dee_pa_c6_eng }} </td>
+	<td> {{dee_pa_c7_eng }} </td>
+	<td> {{dee_pa_c8_eng }} </td>
+	<td> {{dee_pa_c9_eng }} </td>
+	<td> {{dee_pa_c10_eng }} </td>
+	<td> {{dee_pa_c11_eng }} </td>
+	<td> {{dee_pa_c12_eng }} </td>
+	<td> {{dee_pa_total_eng }} </td>
+</tr>
+</table>
+</div>
+<div id="telugu" >
+<h2><center><font color="red">TELUGU MEDIUM REPORT - STATE LEVEL </font></center></h2>
+<h2><center><font color="green">Directorate  of School Education</font></center></h2>
+<table border="2" cellpadding="5">
+<tr>
+<th ><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="1,TELUGU">Government</button></td>
+	<td> {{ds_g_c1_telgu }} </td>
+	<td> {{ds_g_c2_telgu }} </td>
+	<td> {{ds_g_c3_telgu }} </td>
+	<td> {{ds_g_c4_telgu }} </td>
+	<td> {{ds_g_c5_telgu }} </td>
+	<td> {{ds_g_c6_telgu }} </td>
+	<td> {{ds_g_c7_telgu }} </td>
+	<td> {{ds_g_c8_telgu }} </td>
+	<td> {{ds_g_c9_telgu }} </td>
+	<td> {{ds_g_c10_telgu }} </td>
+	<td> {{ds_g_c11_telgu }} </td>
+	<td> {{ds_g_c12_telgu }} </td>
+	<td> {{ds_g_total_telgu }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="2,TELUGU">Pvt Aided</button></td>
+	<td> {{ds_pa_c1_telgu }} </td>
+	<td> {{ds_pa_c2_telgu }} </td>
+	<td> {{ds_pa_c3_telgu }} </td>
+	<td> {{ds_pa_c4_telgu }} </td>
+	<td> {{ds_pa_c5_telgu }} </td>
+	<td> {{ds_pa_c6_telgu }} </td>
+	<td> {{ds_pa_c7_telgu }} </td>
+	<td> {{ds_pa_c8_telgu }} </td>
+	<td> {{ds_pa_c9_telgu }} </td>
+	<td> {{ds_pa_c10_telgu }} </td>
+	<td> {{ds_pa_c11_telgu }} </td>
+	<td> {{ds_pa_c12_telgu }} </td>
+	<td> {{ds_pa_total_telgu }} </td>
+</tr>
+</table>
+<h2><center><font color="green">Directorate  of Elementary Education</font></center></h2>
+<table border="2" cellpadding="5">
+<tr>
+<th><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="6,TELUGU">Government</button></td>
+	<td> {{dee_g_c1_telgu }} </td>
+	<td> {{dee_g_c2_telgu }} </td>
+	<td> {{dee_g_c3_telgu }} </td>
+	<td> {{dee_g_c4_telgu }} </td>
+	<td> {{dee_g_c5_telgu }} </td>
+	<td> {{dee_g_c6_telgu }} </td>
+	<td> {{dee_g_c7_telgu }} </td>
+	<td> {{dee_g_c8_telgu }} </td>
+	<td> {{dee_g_c9_telgu }} </td>
+	<td> {{dee_g_c10_telgu }} </td>
+	<td> {{dee_g_c11_telgu }} </td>
+	<td> {{dee_g_c12_telgu }} </td>
+	<td> {{dee_g_total_telgu }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="7,TELUGU">Pvt Aided</button></td>
+	<td> {{dee_pa_c1_telgu }} </td>
+	<td> {{dee_pa_c2_telgu }} </td>
+	<td> {{dee_pa_c3_telgu }} </td>
+	<td> {{dee_pa_c4_telgu }} </td>
+	<td> {{dee_pa_c5_telgu }} </td>
+	<td> {{dee_pa_c6_telgu }} </td>
+	<td> {{dee_pa_c7_telgu }} </td>
+	<td> {{dee_pa_c8_telgu }} </td>
+	<td> {{dee_pa_c9_telgu }} </td>
+	<td> {{dee_pa_c10_telgu }} </td>
+	<td> {{dee_pa_c11_telgu }} </td>
+	<td> {{dee_pa_c12_telgu }} </td>
+	<td> {{dee_pa_total_telgu }} </td>
+</tr>
+</table>
+</div>
+
+<div id="mlym" >
+<h2><center><font color="red">MALAYALAM MEDIUM REPORT - STATE LEVEL </font></center></h2>
+<h2><center><font color="green">Directorate  of School Education</font></center></h2>
+<table border="2" cellpadding="5">
+<tr>
+<th ><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="1,MALAYALAM">Government</button></td>
+	<td> {{ds_g_c1_malam }} </td>
+	<td> {{ds_g_c2_malam }} </td>
+	<td> {{ds_g_c3_malam }} </td>
+	<td> {{ds_g_c4_malam }} </td>
+	<td> {{ds_g_c5_malam }} </td>
+	<td> {{ds_g_c6_malam }} </td>
+	<td> {{ds_g_c7_malam }} </td>
+	<td> {{ds_g_c8_malam }} </td>
+	<td> {{ds_g_c9_malam }} </td>
+	<td> {{ds_g_c10_malam }} </td>
+	<td> {{ds_g_c11_malam }} </td>
+	<td> {{ds_g_c12_malam }} </td>
+	<td> {{ds_g_total_malam }} </td>
+</tr>
+
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="2,MALAYALAM">Pvt Aided</button></td>
+	<td> {{ds_pa_c1_malam }} </td>
+	<td> {{ds_pa_c2_malam }} </td>
+	<td> {{ds_pa_c3_malam }} </td>
+	<td> {{ds_pa_c4_malam }} </td>
+	<td> {{ds_pa_c5_malam }} </td>
+	<td> {{ds_pa_c6_malam }} </td>
+	<td> {{ds_pa_c7_malam }} </td>
+	<td> {{ds_pa_c8_malam }} </td>
+	<td> {{ds_pa_c9_malam }} </td>
+	<td> {{ds_pa_c10_malam }} </td>
+	<td> {{ds_pa_c11_malam }} </td>
+	<td> {{ds_pa_c12_malam }} </td>
+	<td> {{ds_pa_total_malam }} </td>
+</tr>
+</table>
+<h2><center><font color="green">Directorate  of Elementary Education</font></center></h2>
+<table border="2" cellpadding="5">
+<tr>
+<th><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="6,MALAYALAM">Government</button></td>
+	<td> {{dee_g_c1_malam }} </td>
+	<td> {{dee_g_c2_malam }} </td>
+	<td> {{dee_g_c3_malam }} </td>
+	<td> {{dee_g_c4_malam }} </td>
+	<td> {{dee_g_c5_malam }} </td>
+	<td> {{dee_g_c6_malam }} </td>
+	<td> {{dee_g_c7_malam }} </td>
+	<td> {{dee_g_c8_malam }} </td>
+	<td> {{dee_g_c9_malam }} </td>
+	<td> {{dee_g_c10_malam }} </td>
+	<td> {{dee_g_c11_malam }} </td>
+	<td> {{dee_g_c12_malam }} </td>
+	<td> {{dee_g_total_malam }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="7,MALAYALAM">Pvt Aided</button></td>
+	<td> {{dee_pa_c1_malam }} </td>
+	<td> {{dee_pa_c2_malam }} </td>
+	<td> {{dee_pa_c3_malam }} </td>
+	<td> {{dee_pa_c4_malam }} </td>
+	<td> {{dee_pa_c5_malam }} </td>
+	<td> {{dee_pa_c6_malam }} </td>
+	<td> {{dee_pa_c7_malam }} </td>
+	<td> {{dee_pa_c8_malam }} </td>
+	<td> {{dee_pa_c9_malam }} </td>
+	<td> {{dee_pa_c10_malam }} </td>
+	<td> {{dee_pa_c11_malam }} </td>
+	<td> {{dee_pa_c12_malam }} </td>
+	<td> {{dee_pa_total_malam }} </td>
+</tr>
+</table>
+</div>
+<div id="kannada" >
+<h2><center><font color="red">KANNADA MEDIUM REPORT - STATE LEVEL </font></center></h2>
+<h2><center><font color="green">Directorate  of School Education</font></center></h2>
+<table border="2" cellpadding="5">
+<tr>
+<th ><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="1,KANNADA">Government</button></td>
+	<td> {{ds_g_c1_kanada }} </td>
+	<td> {{ds_g_c2_kanada }} </td>
+	<td> {{ds_g_c3_kanada }} </td>
+	<td> {{ds_g_c4_kanada }} </td>
+	<td> {{ds_g_c5_kanada }} </td>
+	<td> {{ds_g_c6_kanada }} </td>
+	<td> {{ds_g_c7_kanada }} </td>
+	<td> {{ds_g_c8_kanada }} </td>
+	<td> {{ds_g_c9_kanada }} </td>
+	<td> {{ds_g_c10_kanada }} </td>
+	<td> {{ds_g_c11_kanada }} </td>
+	<td> {{ds_g_c12_kanada }} </td>
+	<td> {{ds_g_total_kanada }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="2,KANNADA">Pvt Aided</button></td>
+	<td> {{ds_pa_c1_kanada }} </td>
+	<td> {{ds_pa_c2_kanada }} </td>
+	<td> {{ds_pa_c3_kanada }} </td>
+	<td> {{ds_pa_c4_kanada }} </td>
+	<td> {{ds_pa_c5_kanada }} </td>
+	<td> {{ds_pa_c6_kanada }} </td>
+	<td> {{ds_pa_c7_kanada }} </td>
+	<td> {{ds_pa_c8_kanada }} </td>
+	<td> {{ds_pa_c9_kanada }} </td>
+	<td> {{ds_pa_c10_kanada }} </td>
+	<td> {{ds_pa_c11_kanada }} </td>
+	<td> {{ds_pa_c12_kanada }} </td>
+	<td> {{ds_pa_total_kanada }} </td>
+</tr>
+</table>
+<h2><center><font color="green">Directorate  of Elementary Education</font></center></h2>
+<table border="2" cellpadding="5">
+<tr>
+<th><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="6,KANNADA">Government</button></td>
+	<td> {{dee_g_c1_kanada }} </td>
+	<td> {{dee_g_c2_kanada }} </td>
+	<td> {{dee_g_c3_kanada }} </td>
+	<td> {{dee_g_c4_kanada }} </td>
+	<td> {{dee_g_c5_kanada }} </td>
+	<td> {{dee_g_c6_kanada }} </td>
+	<td> {{dee_g_c7_kanada }} </td>
+	<td> {{dee_g_c8_kanada }} </td>
+	<td> {{dee_g_c9_kanada }} </td>
+	<td> {{dee_g_c10_kanada }} </td>
+	<td> {{dee_g_c11_kanada }} </td>
+	<td> {{dee_g_c12_kanada }} </td>
+	<td> {{dee_g_total_kanada }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="7,KANNADA">Pvt Aided</button></td>
+	<td> {{dee_pa_c1_kanada }} </td>
+	<td> {{dee_pa_c2_kanada }} </td>
+	<td> {{dee_pa_c3_kanada }} </td>
+	<td> {{dee_pa_c4_kanada }} </td>
+	<td> {{dee_pa_c5_kanada }} </td>
+	<td> {{dee_pa_c6_kanada }} </td>
+	<td> {{dee_pa_c7_kanada }} </td>
+	<td> {{dee_pa_c8_kanada }} </td>
+	<td> {{dee_pa_c9_kanada }} </td>
+	<td> {{dee_pa_c10_kanada }} </td>
+	<td> {{dee_pa_c11_kanada }} </td>
+	<td> {{dee_pa_c12_kanada }} </td>
+	<td> {{dee_pa_total_kanada }} </td>
+</tr>
+</table>
+</div>
+
+<div id="urudu" >
+<h2><center><font color="red">URUDU MEDIUM REPORT - STATE LEVEL </font></center></h2>
+<h2><center><font color="green">Directorate  of School Education</font></center></h2>
+
+<table border="2" cellpadding="5">
+<tr>
+<th ><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="1,URUDU">Government</button></td>
+	<td> {{ds_g_c1_urudu }} </td>
+	<td> {{ds_g_c2_urudu }} </td>
+	<td> {{ds_g_c3_urudu }} </td>
+	<td> {{ds_g_c4_urudu }} </td>
+	<td> {{ds_g_c5_urudu }} </td>
+	<td> {{ds_g_c6_urudu }} </td>
+	<td> {{ds_g_c7_urudu }} </td>
+	<td> {{ds_g_c8_urudu }} </td>
+	<td> {{ds_g_c9_urudu }} </td>
+	<td> {{ds_g_c10_urudu }} </td>
+	<td> {{ds_g_c11_urudu }} </td>
+	<td> {{ds_g_c12_urudu }} </td>
+	<td> {{ds_g_total_urudu }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="2,URUDU">Pvt Aided</button></td>
+	<td> {{ds_pa_c1_urudu }} </td>
+	<td> {{ds_pa_c2_urudu }} </td>
+	<td> {{ds_pa_c3_urudu }} </td>
+	<td> {{ds_pa_c4_urudu }} </td>
+	<td> {{ds_pa_c5_urudu }} </td>
+	<td> {{ds_pa_c6_urudu }} </td>
+	<td> {{ds_pa_c7_urudu }} </td>
+	<td> {{ds_pa_c8_urudu }} </td>
+	<td> {{ds_pa_c9_urudu }} </td>
+	<td> {{ds_pa_c10_urudu }} </td>
+	<td> {{ds_pa_c11_urudu }} </td>
+	<td> {{ds_pa_c12_urudu }} </td>
+	<td> {{ds_pa_total_urudu }} </td>
+</tr>
+</table>
+<h2><center><font color="green">Directorate  of Elementary Education</font></center></h2>
+<table border="2" cellpadding="5">
+<tr>
+<th><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="6,URUDU">Government</button></td>
+	<td> {{dee_g_c1_urudu }} </td>
+	<td> {{dee_g_c2_urudu }} </td>
+	<td> {{dee_g_c3_urudu }} </td>
+	<td> {{dee_g_c4_urudu }} </td>
+	<td> {{dee_g_c5_urudu }} </td>
+	<td> {{dee_g_c6_urudu }} </td>
+	<td> {{dee_g_c7_urudu }} </td>
+	<td> {{dee_g_c8_urudu }} </td>
+	<td> {{dee_g_c9_urudu }} </td>
+	<td> {{dee_g_c10_urudu }} </td>
+	<td> {{dee_g_c11_urudu }} </td>
+	<td> {{dee_g_c12_urudu }} </td>
+	<td> {{dee_g_total_urudu }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="7,URUDU">Pvt Aided</button></td>
+	<td> {{dee_pa_c1_urudu }} </td>
+	<td> {{dee_pa_c2_urudu }} </td>
+	<td> {{dee_pa_c3_urudu }} </td>
+	<td> {{dee_pa_c4_urudu }} </td>
+	<td> {{dee_pa_c5_urudu }} </td>
+	<td> {{dee_pa_c6_urudu }} </td>
+	<td> {{dee_pa_c7_urudu }} </td>
+	<td> {{dee_pa_c8_urudu }} </td>
+	<td> {{dee_pa_c9_urudu }} </td>
+	<td> {{dee_pa_c10_urudu }} </td>
+	<td> {{dee_pa_c11_urudu }} </td>
+	<td> {{dee_pa_c12_urudu }} </td>
+	<td> {{dee_pa_total_urudu }} </td>
+</tr>
+</table>
+</div>
+
+<div id="enrol" name="enrol">
+<h2><center><font color="red">ENROLLMENT REPORT - STATE LEVEL </font></center></h2>
+
+<h2><center><font color="green">Directorate  of School Education</font></center></h2>
+
+<table border="2" cellpadding="5">
+<tr>
+<th ><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="1">Government</button></td>
+	<td> {{ds_g_c1 }} </td>
+	<td> {{ds_g_c2 }} </td>
+	<td> {{ds_g_c3 }} </td>
+	<td> {{ds_g_c4 }} </td>
+	<td> {{ds_g_c5 }} </td>
+	<td> {{ds_g_c6 }} </td>
+	<td> {{ds_g_c7 }} </td>
+	<td> {{ds_g_c8 }} </td>
+	<td> {{ds_g_c9 }} </td>
+	<td> {{ds_g_c10 }} </td>
+	<td> {{ds_g_c11 }} </td>
+	<td> {{ds_g_c12 }} </td>
+	<td> {{ds_g_c_total }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="2">Pvt Aided</button></td>
+	<td> {{ds_pa_c1 }} </td>
+	<td> {{ds_pa_c2 }} </td>
+	<td> {{ds_pa_c3 }} </td>
+	<td> {{ds_pa_c4 }} </td>
+	<td> {{ds_pa_c5 }} </td>
+	<td> {{ds_pa_c6 }} </td>
+	<td> {{ds_pa_c7 }} </td>
+	<td> {{ds_pa_c8 }} </td>
+	<td> {{ds_pa_c9 }} </td>
+	<td> {{ds_pa_c10 }} </td>
+	<td> {{ds_pa_c11 }} </td>
+	<td> {{ds_pa_c12 }} </td>
+	<td> {{ds_pa_c_total }} </td>
+</tr>
+</table>
+<h2><center><font color="green">Directorate  of Elementary Education</font></center></h2>
+<table border="2" cellpadding="5">
+<tr>
+<th><center>Management</center></th>
+<th ><center>I</center></th>
+<th ><center>II</center></th>
+<th ><center>III</center></th>
+<th ><center>IV</center></th>
+<th ><center>V</center></th>
+<th ><center>VI</center></th>
+<th ><center>VII</center></th>
+<th ><center>VIII</center></th>
+<th ><center>IX</center></th>
+<th ><center>X</center></th>
+<th ><center>XI</center></th>
+<th ><center>XII</center></th>
+<th ><center>TOTAL</center></th>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="6">Government</button></td>
+	<td> {{dee_g_c1 }} </td>
+	<td> {{dee_g_c2 }} </td>
+	<td> {{dee_g_c3 }} </td>
+	<td> {{dee_g_c4 }} </td>
+	<td> {{dee_g_c5 }} </td>
+	<td> {{dee_g_c6 }} </td>
+	<td> {{dee_g_c7 }} </td>
+	<td> {{dee_g_c8 }} </td>
+	<td> {{dee_g_c9 }} </td>
+	<td> {{dee_g_c10 }} </td>
+	<td> {{dee_g_c11 }} </td>
+	<td> {{dee_g_c12 }} </td>
+	<td> {{dee_g_c_total }} </td>
+</tr>
+<tr><td> <button  name="distt"  class="btn btn-defaullt btn-lg";  type="submit" value="7">Pvt Aided</button></td>
+	<td> {{dee_pa_c1 }} </td>
+	<td> {{dee_pa_c2 }} </td>
+	<td> {{dee_pa_c3 }} </td>
+	<td> {{dee_pa_c4 }} </td>
+	<td> {{dee_pa_c5 }} </td>
+	<td> {{dee_pa_c6 }} </td>
+	<td> {{dee_pa_c7 }} </td>
+	<td> {{dee_pa_c8 }} </td>
+	<td> {{dee_pa_c9 }} </td>
+	<td> {{dee_pa_c10 }} </td>
+	<td> {{dee_pa_c11 }} </td>
+	<td> {{dee_pa_c12 }} </td>
+	<td> {{dee_pa_c_total }} </td>
+</tr>
+</table>
+</div>
+</form>
+{% endblock %}
